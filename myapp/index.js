@@ -59,12 +59,14 @@ app.delete('/client/:id', (req, res) => {
     )
 });
 
+//Viewing all documents in the distribution collection
 app.get('/distribution', (req, res) => {
     projectDB.collection('distribution').find().toArray(function (err, items) {
         res.json(items);
     });
 });
 
+//Adding a distribution to the collection
 app.post('/distribution', (req, res) => {
 
     const distribution = req.body;
