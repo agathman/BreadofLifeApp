@@ -46,4 +46,19 @@ app.post('/client', (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 
+=======
+app.delete('/client/:id', (req, res) => {
+    // Reading id from the URL
+    const id = req.params.id;
+
+    // Remove item student ID
+    projectDB.collection('client').deleteOne(
+        { id: id }, //mongodb query
+        function () { //calback
+            res.send('Successfully deleted!') //response
+        }
+    )
+});
+>>>>>>> 790b58131e1b9eb015e02c61dcc392d2ed04aae9
