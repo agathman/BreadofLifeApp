@@ -1,0 +1,25 @@
+use ('projectdb');
+
+//Creating collections
+db.createCollection('distribution');
+db.createCollection('client');
+
+db.client.insert({
+    distribution_id:,
+    fname:,
+    lname:,
+    phoneNumber:,
+    reference:,
+    zip:,
+    takeVaccine:,
+    vaccinePreference:,
+    vaccineReceived:,
+    additionalServices:,
+    children:,
+    senior:,
+    veteran:
+});
+
+db.distribution.insert({
+
+});
