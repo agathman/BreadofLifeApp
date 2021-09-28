@@ -21,5 +21,9 @@ db.client.insert({
 });
 
 db.distribution.insert({
+    distribution_id:,
+    reliefType:,
+    reliefDate:,
+    location:
 
 });
