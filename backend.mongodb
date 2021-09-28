@@ -1,4 +1,4 @@
-use ('projectdb');
+use('projectdb');
 
 //Creating collections
 db.createCollection('distribution');
@@ -75,3 +75,28 @@ db.distribution.insert({
     reliefDate:'October 9th',
     location:'Crawford Street'
 });
+
+//Read Scripts
+use('projectdb');
+db.client.find();
+
+use('projectdb');
+db.client.find();
+
+//Update
+/*use ('projectdb');
+db.client.update({
+
+})
+
+use ('projectdb');
+db.distribution.update({
+    
+})*/
+
+//Delete
+/*use ('projectdb');
+db.client.remove();
+use ('projectdb');
+db.distribution.remove();*/
+
