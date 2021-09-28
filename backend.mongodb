@@ -5,25 +5,73 @@ db.createCollection('distribution');
 db.createCollection('client');
 
 db.client.insert({
-    distribution_id:,
-    fname:,
-    lname:,
-    phoneNumber:,
-    reference:,
-    zip:,
-    takeVaccine:,
-    vaccinePreference:,
-    vaccineReceived:,
-    additionalServices:,
-    children:,
-    senior:,
-    veteran:
+    distribution_id:1,
+    fname:'John',
+    lname:'Doe',
+    phoneNumber:'832-951-7412',
+    reference:'Facebook',
+    zip:'77505',
+    takeVaccine:'Yes',
+    vaccinePreference:'Pfizer',
+    vaccineReceived:'No',
+    additionalServices:'No',
+    children:1,
+    senior:'No',
+    veteran:'No',
+    ethnicity:'Multi or Biracial'
+});
+
+db.client.insert({
+    distribution_id:2,
+    fname:'Jane',
+    lname:'Doe',
+    phoneNumber:'832-459-9856',
+    reference:'Twitter',
+    zip:'77505',
+    takeVaccine:'no',
+    vaccinePreference: null,
+    vaccineReceived: null,
+    additionalServices:'Yes',
+    children:2,
+    senior:'Yes',
+    veteran:'No',
+    ethnicity:'Hispanic or Latino'
+});
+
+db.client.insert({
+    distribution_id:3,
+    fname:'Jack',
+    lname:'Jones',
+    phoneNumber:'832-796-3565',
+    reference:'Word of Mouth',
+    zip:'77505',
+    takeVaccine:'Yes',
+    vaccinePreference: 'Moderna',
+    vaccineReceived: 'Yes',
+    additionalServices:'No',
+    children:0,
+    senior:'Yes',
+    veteran:'Yes',
+    ethnicity:'White or Caucasian'
 });
 
 db.distribution.insert({
-    distribution_id:,
-    reliefType:,
-    reliefDate:,
-    location:
+    distribution_id:1,
+    reliefType:'Food Distribution',
+    reliefDate:'September 4th',
+    location:'BBVA stadium'
+});
 
+db.distribution.insert({
+    distribution_id:2,
+    reliefType:'Ida disaster relief',
+    reliefDate:'September 8th',
+    location:'Crawford Street'
+});
+
+db.distribution.insert({
+    distribution_id:3,
+    reliefType:'Food Distribution',
+    reliefDate:'October 9th',
+    location:'Crawford Street'
 });
