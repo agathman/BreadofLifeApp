@@ -46,9 +46,6 @@ app.post('/client', (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-
-=======
 app.delete('/client/:id', (req, res) => {
     // Reading id from the URL
     const id = req.params.id;
@@ -61,4 +58,35 @@ app.delete('/client/:id', (req, res) => {
         }
     )
 });
->>>>>>> 790b58131e1b9eb015e02c61dcc392d2ed04aae9
+
+app.get('/distribution', (req, res) => {
+    projectDB.collection('distribution').find().toArray(function (err, items) {
+        res.json(items);
+    });
+});
+
+app.post('/distribution', (req, res) => {
+
+    const distribution = req.body;
+
+    console.log(distribution);
+    
+        projectDB.collection('distribution').insertOne(req.body, function (err, info) {
+        console.log(err);
+        console.log(info);
+        res.send('Distribution is added to DB');
+    });
+});
+
+app.delete('/distribution/:id', (req, res) => {
+    // Reading id from the URL
+    const id = req.params.id;
+
+    // Remove item student ID
+    projectDB.collection('distribution').deleteOne(
+        { id: id }, //mongodb query
+        function () { //calback
+            res.send('Successfully deleted!') //response
+        }
+    )
+});
