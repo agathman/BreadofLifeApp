@@ -40,3 +40,16 @@ app.post('/client', (req, res) => {
         res.send('Client is added to DB');
     });
 });
+
+app.delete('/client/:id', (req, res) => {
+    // Reading id from the URL
+    const id = req.params.id;
+
+    // Remove item student ID
+    projectDB.collection('client').deleteOne(
+        { id: id }, //mongodb query
+        function () { //calback
+            res.send('Successfully deleted!') //response
+        }
+    )
+});
