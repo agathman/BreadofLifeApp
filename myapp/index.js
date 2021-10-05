@@ -130,6 +130,44 @@ app.put('/distribution/:id', (req, res, next) => {
     })
 });
 
+// endpoint for retrieving student by studentID
+app.get('/client/:id', (req, res, next) => {
+    console.log(req.params.id)
+
+    ClientModel.findOne({ _id: req.params.id}, (error, data) => {
+        if (error) {
+            return next(error)
+        } else if (data === null) {
+            // Sending 404 when not found something is a good practice
+          res.status(404).send('Client not found');
+        }
+        else {
+          res.json(data)
+        }
+    });
+});
+
+
+app.get('/client-access/:id', (req, res, next) => {
+    ClientModel.aggregate([
+        { $match : { _id : req.params.id } },
+        { $project : {distribution_id: 1, fName: 1, lName: 1, phoneNumber: 1, zip: 1,
+         takeVaccine: 1} },
+         { $lookup : {
+            from : 'distribution',
+            localField : 'distribution_id',
+            foreignField : 'distribution_id',
+            as : 'distribution'
+        } }
+    ], (error, data) => {
+        if (error) {
+          return next(error)
+        } else {
+          res.json(data);
+        }
+    });
+});
+
 
 app.listen(PORT, () => {
     console.log("Server started listening on port : ", PORT);
