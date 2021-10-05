@@ -5,10 +5,6 @@ const Schema = mongoose.Schema;
 let clientSchema = new Schema({
     //_id: Number,
     _id: { type: String, default: uuid.v1 },
-    client_id: {
-      type: Number,
-      required: true
-    },
     distribution_id: {
       type: Number,
       required: true
