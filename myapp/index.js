@@ -8,28 +8,57 @@ const MongoClient = require('mongodb').MongoClient;
 const app = express();
 const port = 3000;
 
+
 app.use(cors());
+
+//inport client model
+let ClientModel = require('./models/client');
+
+mongoose
+  .connect(process.env.MONGO_URL)   // read environment varibale from .env
+  .then(() => {
+    console.log("Database connection Success!");
+  })
+  .catch((err) => {
+    console.error("Mongo Connection Error", err);
+  });
+
+const PORT = process.env.PORT || 3000;
+
 
 app.use(express.urlencoded({extended:false }));
 app.use(express.json());
+app.use(morgan("dev"));  //enable incoming request logging in dev mode
+
+app.get('/clients', (req, res, next) => {
+    //very plain way to get all the data from the collection through the mongoose schema
+    ClientModel.find((error, data) => {
+        if (error) {
+          //here we are using a call to next() to send an error message back
+          return next(error)
+        } else {
+          res.json(data)
+        }
+      })
+});
 
 //DB var name
-let projectDB;
+/*let projectDB;
 //Connection string to DB
-let connectionString = 'mongodb://localhost:27017/projectdb'
+let connectionString = 'mongodb://localhost:27017/projectdb';*/
 
 //Connecting to MongoDB
-MongoClient.connect (
+/*MongoClient.connect (
     connectionString,
     { useNewUrlParser: true, useUnifiedTopology: true },
     function (err, client) {
         projectDB = client.db();
         app.listen(port, () => console.log('Listening on Port ' + port ));
     }
-);
+);*/
 
 //Viewing all documents in the client collection
-app.get('/client', (req, res) => {
+/*app.get('/client', (req, res) => {
     projectDB.collection('client').find().toArray(function (err, items) {
         res.json(items);
     });
@@ -49,6 +78,7 @@ app.post('/client', (req, res) => {
     });
 });
 
+//Deleting a client from the collection
 app.delete('/client/:id', (req, res) => {
     // Reading id from the URL
     const id = req.params.id;
@@ -83,6 +113,7 @@ app.post('/distribution', (req, res) => {
     });
 });
 
+//Deleting a distribution from the collection
 app.delete('/distribution/:id', (req, res) => {
     // Reading id from the URL
     const id = req.params.id;
@@ -94,4 +125,16 @@ app.delete('/distribution/:id', (req, res) => {
             res.send('Successfully deleted!') //response
         }
     )
+});*/
+
+app.listen(PORT, () => {
+    console.log("Server started listening on port : ", PORT);
+  });
+
+  // error handler
+app.use(function (err, req, res, next) {
+    console.error(err.message);
+    if (!err.statusCode) 
+        err.statusCode = 500;
+    res.status(err.statusCode).send(err.message);
 });

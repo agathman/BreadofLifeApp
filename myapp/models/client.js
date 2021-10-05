@@ -2,7 +2,7 @@ const uuid = require('uuid');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let studentSchema = new Schema({
+let clientSchema = new Schema({
     //_id: Number,
     _id: { type: String, default: uuid.v1 },
     distribution_id: {
@@ -55,7 +55,7 @@ let studentSchema = new Schema({
     collection: 'client'
 });
 
-module.exports = mongoose.model('client', projectdb)
+module.exports = mongoose.model('client', clientSchema)
 
 //versionKey: false 
 
