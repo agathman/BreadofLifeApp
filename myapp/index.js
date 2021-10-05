@@ -14,6 +14,8 @@ app.use(cors());
 //inport client model
 let ClientModel = require('./models/client');
 
+let DistributionModel = require('./models/distribution');
+
 mongoose
   .connect(process.env.MONGO_URL)   // read environment varibale from .env
   .then(() => {
@@ -33,6 +35,18 @@ app.use(morgan("dev"));  //enable incoming request logging in dev mode
 app.get('/clients', (req, res, next) => {
     //very plain way to get all the data from the collection through the mongoose schema
     ClientModel.find((error, data) => {
+        if (error) {
+          //here we are using a call to next() to send an error message back
+          return next(error)
+        } else {
+          res.json(data)
+        }
+      })
+});
+
+app.get('/distribution', (req, res, next) => {
+    //very plain way to get all the data from the collection through the mongoose schema
+    DistributionModel.find((error, data) => {
         if (error) {
           //here we are using a call to next() to send an error message back
           return next(error)

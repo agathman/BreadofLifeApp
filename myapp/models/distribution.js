@@ -14,12 +14,11 @@ let distributionSchema = new Schema({
       required: true
     },
     reliefDate: {
-        type: date,
-        required: true
+      date: String,
     },
     location: {
-        type: string,
-        required: true
+      type: String,
+      required: true
     }
   }, {
     collection: 'distribution'
