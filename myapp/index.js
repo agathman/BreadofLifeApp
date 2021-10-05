@@ -81,6 +81,55 @@ app.put('/client/:id', (req, res, next) => {
     })
 });
 
+app.get('/distribution', (req, res, next) => {
+    //very plain way to get all the data from the collection through the mongoose schema
+    ClientModel.find((error, data) => {
+        if (error) {
+          //here we are using a call to next() to send an error message back
+          return next(error)
+        } else {
+          res.json(data)
+        }
+      })
+});
+
+app.delete('/distribution/:id' , (req, res, next) => {
+    DistributionModel.findByIdAndRemove(req.params.id, (error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            res.status(200).json({
+                msg: data
+            })
+        }
+    })
+});
+
+app.post('distribution', (req, res, next) => {
+
+    StudentModel.create(req.body, (error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(date)
+            res.send('Distribution is added to database');
+        }
+    })
+})
+
+app.put('/distribution/:id', (req, res, next) => {
+    StudentModel.findOneAndUpdate({ distributionID: req.params.id }, {
+        $set: req.body
+    }, (error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            res.send('Distribution is edited via put');
+            console.log('Distribution updated', data)
+    }
+    })
+});
+
 
 app.listen(PORT, () => {
     console.log("Server started listening on port : ", PORT);
