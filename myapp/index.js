@@ -93,6 +93,7 @@ app.put('/client/:id', (req, res, next) => {
     })
 });
 
+<<<<<<< HEAD
 app.get('/clientEvents/:distribution_id', (req, res, next) => {
    
     ClientModel.aggregate( [
@@ -113,91 +114,95 @@ app.get('/clientEvents/:distribution_id', (req, res, next) => {
     });
 });
 
+=======
+app.get('/distribution', (req, res, next) => {
+    //very plain way to get all the data from the collection through the mongoose schema
+    ClientModel.find((error, data) => {
+        if (error) {
+          //here we are using a call to next() to send an error message back
+          return next(error)
+        } else {
+          res.json(data)
+        }
+      })
+});
+>>>>>>> 0d970aae584d247da07d679bcc9a78d477f1f4f3
 
-//DB var name
-/*let projectDB;
-//Connection string to DB
-let connectionString = 'mongodb://localhost:27017/projectdb';*/
+app.delete('/distribution/:id' , (req, res, next) => {
+    DistributionModel.findByIdAndRemove(req.params.id, (error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            res.status(200).json({
+                msg: data
+            })
+        }
+    })
+});
 
-//Connecting to MongoDB
-/*MongoClient.connect (
-    connectionString,
-    { useNewUrlParser: true, useUnifiedTopology: true },
-    function (err, client) {
-        projectDB = client.db();
-        app.listen(port, () => console.log('Listening on Port ' + port ));
+app.post('distribution', (req, res, next) => {
+
+    StudentModel.create(req.body, (error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(date)
+            res.send('Distribution is added to database');
+        }
+    })
+})
+
+app.put('/distribution/:id', (req, res, next) => {
+    StudentModel.findOneAndUpdate({ distributionID: req.params.id }, {
+        $set: req.body
+    }, (error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            res.send('Distribution is edited via put');
+            console.log('Distribution updated', data)
     }
-);*/
-
-//Viewing all documents in the client collection
-/*app.get('/client', (req, res) => {
-    projectDB.collection('client').find().toArray(function (err, items) {
-        res.json(items);
-    });
+    })
 });
 
-//Adding a client to the collection
-app.post('/client', (req, res) => {
+// endpoint for retrieving student by studentID
+app.get('/client/:id', (req, res, next) => {
+    console.log(req.params.id)
 
-    const newClient = req.body;
-
-    console.log(newClient);
-    
-        projectDB.collection('client').insertOne(req.body, function (err, info) {
-        console.log(err);
-        console.log(info);
-        res.send('Client is added to DB');
-    });
-});
-
-//Deleting a client from the collection
-app.delete('/client/:id', (req, res) => {
-    // Reading id from the URL
-    const id = req.params.id;
-
-    // Remove item student ID
-    projectDB.collection('client').deleteOne(
-        { id: id }, //mongodb query
-        function () { //calback
-            res.send('Successfully deleted!') //response
+    ClientModel.findOne({ _id: req.params.id}, (error, data) => {
+        if (error) {
+            return next(error)
+        } else if (data === null) {
+            // Sending 404 when not found something is a good practice
+          res.status(404).send('Client not found');
         }
-    )
-});
-
-//Viewing all documents in the distribution collection
-app.get('/distribution', (req, res) => {
-    projectDB.collection('distribution').find().toArray(function (err, items) {
-        res.json(items);
-    });
-});
-
-//Adding a distribution to the collection
-app.post('/distribution', (req, res) => {
-
-    const distribution = req.body;
-
-    console.log(distribution);
-    
-        projectDB.collection('distribution').insertOne(req.body, function (err, info) {
-        console.log(err);
-        console.log(info);
-        res.send('Distribution is added to DB');
-    });
-});
-
-//Deleting a distribution from the collection
-app.delete('/distribution/:id', (req, res) => {
-    // Reading id from the URL
-    const id = req.params.id;
-
-    // Remove item student ID
-    projectDB.collection('distribution').deleteOne(
-        { id: id }, //mongodb query
-        function () { //calback
-            res.send('Successfully deleted!') //response
+        else {
+          res.json(data)
         }
-    )
-});*/
+    });
+});
+
+
+app.get('/client-access/:id', (req, res, next) => {
+    ClientModel.aggregate([
+        { $match : { _id : req.params.id } },
+        { $project : {distribution_id: 1, fName: 1, lName: 1, phoneNumber: 1, zip: 1,
+         takeVaccine: 1} },
+         { $lookup : {
+            from : 'distribution',
+            localField : 'distribution_id',
+            foreignField : 'distribution_id',
+            as : 'distribution'
+        } }
+    ], (error, data) => {
+        if (error) {
+          return next(error)
+        } else {
+          res.json(data);
+        }
+    });
+});
+
 
 app.listen(PORT, () => {
     console.log("Server started listening on port : ", PORT);

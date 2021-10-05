@@ -21,7 +21,7 @@ let clientSchema = new Schema({
     phoneNumber: {
       type: Number
     },
-    Reference: {
+    reference: {
       type: Number
     },
     zip: {
