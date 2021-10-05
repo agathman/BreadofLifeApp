@@ -42,6 +42,44 @@ app.get('/clients', (req, res, next) => {
       })
 });
 
+app.delete('/client/:id' , (req, res, next) => {
+    ClientModel.findByIdAndRemove(req.params.id, (error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            res.status(200).json({
+                msg: data
+            })
+        }
+    })
+});
+
+app.post('client', (req, res, next) => {
+
+    StudentModel.create(req.body, (error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(date)
+            res.send('Client is added to database');
+        }
+    })
+})
+
+app.put('/client/:id', (req, res, next) => {
+    StudentModel.findOneAndUpdate({ clientID: req.params.id }, {
+        $set: req.body
+    }, (error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            res.send('Client is edited via put');
+            console.log('Client updated', data)
+    }
+    })
+});
+
+
 //DB var name
 /*let projectDB;
 //Connection string to DB
