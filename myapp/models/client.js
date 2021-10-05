@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 let clientSchema = new Schema({
     //_id: Number,
-    _id: { type: String, default: uuid.v1 },
+   // _id: { type: String, default: uuid.v1 
+    //},
     distribution_id: {
       type: Number,
       required: true
