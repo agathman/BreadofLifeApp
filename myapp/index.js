@@ -130,11 +130,11 @@ app.put('/distribution/:id', (req, res, next) => {
     })
 });
 
-// endpoint for retrieving student by studentID
-app.get('/client/:id', (req, res, next) => {
+// endpoint for retrieving client by _ID
+app.get('/findclient/:id', (req, res, next) => {
     console.log(req.params.id)
 
-    ClientModel.findOne({ _id: req.params.id}, (error, data) => {
+    ClientModel.findById(req.params.id, (error, data) => {
         if (error) {
             return next(error)
         } else if (data === null) {
