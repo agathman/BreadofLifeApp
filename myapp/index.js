@@ -6,12 +6,11 @@ const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
 
 const app = express();
-const port = 3000;
 
 
 app.use(cors());
 
-//inport client model
+//import client model
 let ClientModel = require('./models/client');
 
 let DistributionModel = require('./models/distribution');
@@ -28,7 +27,6 @@ mongoose
 const PORT = process.env.PORT || 3000;
 
 
-app.use(express.urlencoded({extended:false }));
 app.use(express.json());
 app.use(morgan("dev"));  //enable incoming request logging in dev mode
 
@@ -44,7 +42,21 @@ app.get('/clients', (req, res, next) => {
       })
 });
 
-app.delete('/client/:id' , (req, res, next) => {
+app.get('/findClient/:id', (req, res, next) => {
+    ClientModel.findById(req.params.id, (error, data) => {
+        if (error) {
+            return next(error)
+        } else if (data === null) {
+            res.status(404).send('Client not Found');
+        }
+        else {
+          res.json(data)
+        }
+    })
+});
+
+
+app.delete('/deleteClient/:id' , (req, res, next) => {
     ClientModel.findByIdAndRemove(req.params.id, (error, data) => {
         if (error) {
             return next(error);
@@ -58,7 +70,7 @@ app.delete('/client/:id' , (req, res, next) => {
 
 app.post('client', (req, res, next) => {
 
-    StudentModel.create(req.body, (error, data) => {
+    ClientModel.create(req.body, (error, data) => {
         if (error) {
             return next(error)
         } else {
@@ -69,7 +81,7 @@ app.post('client', (req, res, next) => {
 })
 
 app.put('/client/:id', (req, res, next) => {
-    StudentModel.findOneAndUpdate({ clientID: req.params.id }, {
+    ClientModel.findOneAndUpdate({ clientID: req.params.id }, {
         $set: req.body
     }, (error, data) => {
         if (error) {
@@ -79,6 +91,26 @@ app.put('/client/:id', (req, res, next) => {
             console.log('Client updated', data)
     }
     })
+});
+
+app.get('/clientEvents/:distribution_id', (req, res, next) => {
+   
+    ClientModel.aggregate( [
+        { $match : { distribution_id : req.params.distribution_id } },
+        { $project : { _id : 0, fname: 1 , lname: 1 , phoneNumber: 1 }},
+        { $lookup : {
+            from: 'client',
+            localField : 'client.distribution_id',
+            foreignField : 'distribution.distribution_id',
+            as : 'client'
+        }}
+    ], (error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data);
+        }
+    });
 });
 
 
