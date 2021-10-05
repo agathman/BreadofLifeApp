@@ -14,6 +14,8 @@ app.use(cors());
 //inport client model
 let ClientModel = require('./models/client');
 
+let DistributionModel = require('./models/distribution');
+
 mongoose
   .connect(process.env.MONGO_URL)   // read environment varibale from .env
   .then(() => {
