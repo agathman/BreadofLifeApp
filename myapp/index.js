@@ -1,4 +1,7 @@
 const express = require('express')
+const mongoose = require("mongoose");   //Requre mongoose library
+const morgan = require("morgan");    //logging functionality
+require("dotenv").config();   // Require the dotenv
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
 
