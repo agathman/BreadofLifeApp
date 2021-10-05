@@ -2,10 +2,12 @@ use('projectdb');
 
 //Creating collections
 db.createCollection('distribution');
-db.createCollection('client');
+use('projectdb');
+
+
 
 db.client.insert({
-    distribution_id:1,
+    distributionID:1,
     fname:'John',
     lname:'Doe',
     phoneNumber:'832-951-7412',
@@ -20,9 +22,9 @@ db.client.insert({
     veteran:'No',
     ethnicity:'Multi or Biracial'
 });
-
+use('projectdb');
 db.client.insert({
-    distribution_id:2,
+    distributionID:1,
     fname:'Jane',
     lname:'Doe',
     phoneNumber:'832-459-9856',
@@ -39,7 +41,7 @@ db.client.insert({
 });
 
 db.client.insert({
-    distribution_id:3,
+    distributionID:3,
     fname:'Jack',
     lname:'Jones',
     phoneNumber:'832-796-3565',
@@ -56,21 +58,21 @@ db.client.insert({
 });
 
 db.distribution.insert({
-    distribution_id:1,
+    distributionID:1,
     reliefType:'Food Distribution',
     reliefDate:'September 4th',
     location:'BBVA stadium'
 });
 
 db.distribution.insert({
-    distribution_id:2,
+    distributionID:2,
     reliefType:'Ida disaster relief',
     reliefDate:'September 8th',
     location:'Crawford Street'
 });
 
 db.distribution.insert({
-    distribution_id:3,
+    distributionID:3,
     reliefType:'Food Distribution',
     reliefDate:'October 9th',
     location:'Crawford Street'
