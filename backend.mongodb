@@ -1,9 +1,12 @@
 use('projectdb');
 
 //Creating collections
-db.createCollection('distribution');
 use('projectdb');
 db.createCollection('client');
+
+use('projectdb');
+db.createCollection('distribution');
+
 
 use('projectdb');
 
@@ -24,9 +27,9 @@ db.client.insert({
     veteran:0,
     ethnicity:'Multi or Biracial'
 });
-use('projectdb');
+
 db.client.insert({
-    client_id:2;
+    client_id:2,
     distribution_id:1,
     fName:'Jane',
     lName:'Doe',
@@ -43,7 +46,7 @@ db.client.insert({
     ethnicity:'Hispanic or Latino'
 });
 
-use('projectdb');
+
 db.client.insert({
     client_id:3,
     distribution_id:3,
@@ -62,7 +65,7 @@ db.client.insert({
     ethnicity:'White or Caucasian'
 });
 
-use('projectdb');
+
 db.client.insert({
     client_id:1,
     distribution_id:2,
@@ -81,22 +84,23 @@ db.client.insert({
     ethnicity:'Multi or Biracial'
 });
 
+
 db.distribution.insert({
-    distributionID:1,
+    distribution_id:1,
     reliefType:'Food Distribution',
     reliefDate:'September 4th',
     location:'BBVA stadium'
 });
 
 db.distribution.insert({
-    distributionID:2,
+    distribution_id:2,
     reliefType:'Ida disaster relief',
     reliefDate:'September 8th',
     location:'Crawford Street'
 });
 
 db.distribution.insert({
-    distributionID:3,
+    distribution_id:3,
     reliefType:'Food Distribution',
     reliefDate:'October 9th',
     location:'Crawford Street'
