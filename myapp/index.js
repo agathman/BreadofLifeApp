@@ -181,15 +181,18 @@ app.get('/findclient/:id', (req, res, next) => {
 
 
 app.get('/client-access/:id', (req, res, next) => {
+
+    var stringID = req.params.id;
+    var intID = parseInt(stringID);
+
     ClientModel.aggregate([
-        { $match : { _id : req.params.id } },
-        { $project : {distribution_id: 1, fName: 1, lName: 1, phoneNumber: 1, zip: 1,
-         takeVaccine: 1} },
+        {$match: { client_id : intID } },
+        { $project : {_id: 0, fName: 1, lName: 1, phoneNumber: 1, zip: 1} },
          { $lookup : {
             from : 'distribution',
             localField : 'distribution_id',
             foreignField : 'distribution_id',
-            as : 'distribution'
+            as : 'distributions'
         } }
     ], (error, data) => {
         if (error) {

@@ -6,6 +6,10 @@ let clientSchema = new Schema({
     //_id: Number,
    // _id: { type: String, default: uuid.v1 
     //},
+    client_id: {
+      type: Number,
+      required: true
+    },
     distribution_id: {
       type: Number,
       required: true
@@ -28,26 +32,26 @@ let clientSchema = new Schema({
       type: Number
     },
     takeVaccine: {
-      type: String,
+      type: Boolean,
       required: true
     },
     vaccinePreference: {
       type: String
     },
     vaccineReceived: {
-      type: Number
+      type: Boolean
     },
     additionalServices: {
-      type: String
+      type: Boolean
     },
     children: {
       type: Number
     },
     senior: {
-      type: String
+      type: Boolean
     },
     veteran: {
-      type: String
+      type: Boolean
     },
     ethnicity: {
       type: String

@@ -3,58 +3,82 @@ use('projectdb');
 //Creating collections
 db.createCollection('distribution');
 use('projectdb');
+db.createCollection('client');
 
-
+use('projectdb');
 
 db.client.insert({
-    distributionID:1,
-    fname:'John',
-    lname:'Doe',
+    client_id:1,
+    distribution_id:1,
+    fName:'John',
+    lName:'Doe',
     phoneNumber:'832-951-7412',
     reference:'Facebook',
     zip:'77505',
-    takeVaccine:'Yes',
+    takeVaccine:1,
     vaccinePreference:'Pfizer',
-    vaccineReceived:'No',
-    additionalServices:'No',
+    vaccineReceived:0,
+    additionalServices:0,
     children:1,
-    senior:'No',
-    veteran:'No',
+    senior:0,
+    veteran:0,
     ethnicity:'Multi or Biracial'
 });
 use('projectdb');
 db.client.insert({
-    distributionID:1,
-    fname:'Jane',
-    lname:'Doe',
+    client_id:2;
+    distribution_id:1,
+    fName:'Jane',
+    lName:'Doe',
     phoneNumber:'832-459-9856',
     reference:'Twitter',
     zip:'77505',
-    takeVaccine:'no',
+    takeVaccine:0,
     vaccinePreference: null,
     vaccineReceived: null,
-    additionalServices:'Yes',
+    additionalServices:1,
     children:2,
-    senior:'Yes',
-    veteran:'No',
+    senior:0,
+    veteran:0,
     ethnicity:'Hispanic or Latino'
 });
 
+use('projectdb');
 db.client.insert({
-    distributionID:3,
-    fname:'Jack',
-    lname:'Jones',
+    client_id:3,
+    distribution_id:3,
+    fName:'Jack',
+    lName:'Jones',
     phoneNumber:'832-796-3565',
     reference:'Word of Mouth',
     zip:'77505',
-    takeVaccine:'Yes',
+    takeVaccine:1,
     vaccinePreference: 'Moderna',
-    vaccineReceived: 'Yes',
-    additionalServices:'No',
+    vaccineReceived: 1,
+    additionalServices:0,
     children:0,
-    senior:'Yes',
-    veteran:'Yes',
+    senior:1,
+    veteran:1,
     ethnicity:'White or Caucasian'
+});
+
+use('projectdb');
+db.client.insert({
+    client_id:1,
+    distribution_id:2,
+    fName:'John',
+    lName:'Doe',
+    phoneNumber:'832-951-7412',
+    reference:'Facebook',
+    zip:'77505',
+    takeVaccine:1,
+    vaccinePreference:'Pfizer',
+    vaccineReceived:0,
+    additionalServices:0,
+    children:1,
+    senior:0,
+    veteran:0,
+    ethnicity:'Multi or Biracial'
 });
 
 db.distribution.insert({
