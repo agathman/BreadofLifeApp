@@ -93,7 +93,6 @@ app.put('/client/:id', (req, res, next) => {
     })
 });
 
-<<<<<<< HEAD
 app.get('/clientEvents/:distribution_id', (req, res, next) => {
    
     ClientModel.aggregate( [
@@ -114,7 +113,6 @@ app.get('/clientEvents/:distribution_id', (req, res, next) => {
     });
 });
 
-=======
 app.get('/distribution', (req, res, next) => {
     //very plain way to get all the data from the collection through the mongoose schema
     ClientModel.find((error, data) => {
@@ -126,7 +124,6 @@ app.get('/distribution', (req, res, next) => {
         }
       })
 });
->>>>>>> 0d970aae584d247da07d679bcc9a78d477f1f4f3
 
 app.delete('/distribution/:id' , (req, res, next) => {
     DistributionModel.findByIdAndRemove(req.params.id, (error, data) => {
