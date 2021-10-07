@@ -44,17 +44,22 @@ app.get('/clients', (req, res, next) => {
 });
 
 //Find client by object id
-app.get('/findClient/:id', (req, res, next) => {
+
+// endpoint for retrieving client by _ID
+app.get('/findclient/:id', (req, res, next) => {
+    console.log(req.params.id)
+
     ClientModel.findById(req.params.id, (error, data) => {
         if (error) {
             return next(error)
         } else if (data === null) {
-            res.status(404).send('Client not Found');
+            // Sending 404 when not found something is a good practice
+          res.status(404).send('Client not found');
         }
         else {
           res.json(data)
         }
-    })
+    });
 });
 
 //Delete client by object id
@@ -106,7 +111,7 @@ app.get('/clientEvents/:distribution_id', (req, res, next) => {
 
     ClientModel.aggregate([
         { $match : { distribution_id : intID } },
-        { $project : { _id : 0, fname : 1 , lname : 1  }}
+        { $project : { _id : 0, fname : 1 , lname : 1  , phoneNumber : 1 }}
             
     ], (error, data) => {
         if (error) {
@@ -160,22 +165,6 @@ app.put('/distribution/:id', (req, res, next) => {
     })
 });
 
-// endpoint for retrieving client by _ID
-app.get('/findclient/:id', (req, res, next) => {
-    console.log(req.params.id)
-
-    ClientModel.findById(req.params.id, (error, data) => {
-        if (error) {
-            return next(error)
-        } else if (data === null) {
-            // Sending 404 when not found something is a good practice
-          res.status(404).send('Client not found');
-        }
-        else {
-          res.json(data)
-        }
-    });
-});
 
 //Find all events a client has attended
 app.get('/client-access/:id', (req, res, next) => {
