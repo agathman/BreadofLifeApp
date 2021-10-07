@@ -32,8 +32,10 @@ app.use(morgan("dev"));  //enable incoming request logging in dev mode
 
 //Get all clients
 app.get('/clients', (req, res, next) => {
+    //very plain way to get all the data from the collection through the mongoose schema
     ClientModel.find((error, data) => {
         if (error) {
+          //here we are using a call to next() to send an error message back
           return next(error)
         } else {
           res.json(data)
@@ -42,21 +44,17 @@ app.get('/clients', (req, res, next) => {
 });
 
 //Find client by object id
-
-// endpoint for retrieving client by _ID
-app.get('/findclient/:id', (req, res, next) => {
-    console.log(req.params.id)
-
+app.get('/findClient/:id', (req, res, next) => {
     ClientModel.findById(req.params.id, (error, data) => {
         if (error) {
             return next(error)
         } else if (data === null) {
-          res.status(404).send('Client not found');
+            res.status(404).send('Client not Found');
         }
         else {
           res.json(data)
         }
-    });
+    })
 });
 
 //Delete client by object id
@@ -108,7 +106,7 @@ app.get('/clientEvents/:distribution_id', (req, res, next) => {
 
     ClientModel.aggregate([
         { $match : { distribution_id : intID } },
-        { $project : { _id : 0, fname : 1 , lname : 1  , phoneNumber : 1 }}
+        { $project : { _id : 0, fname : 1 , lname : 1  }}
             
     ], (error, data) => {
         if (error) {
@@ -118,9 +116,6 @@ app.get('/clientEvents/:distribution_id', (req, res, next) => {
         }
     });
 });
-
-
-
 
 //Delete distribution by object id
 app.delete('/deleteDistribution/:id' , (req, res, next) => {
@@ -159,6 +154,20 @@ app.put('/distribution/:id', (req, res, next) => {
             res.send('Distribution is edited via put');
             console.log('Distribution updated', data)
     }
+    })
+});
+
+//Get all distribution events
+app.get('/distributions',(req, res, next) => {
+//very plain way to get all the data from the collection through the mongoose schema
+    DistributionModel.find((error,data) => {
+        if (error) {
+//here we are using a call to next() to send an error message back
+        return next(error)
+        } 
+        else {
+            res.json(data)
+        }
     })
 });
 
