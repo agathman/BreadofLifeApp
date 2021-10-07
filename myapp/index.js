@@ -196,7 +196,7 @@ app.get('/client-access/:id', (req, res, next) => {
 
     ClientModel.aggregate([
         {$match: { client_id : intID } },
-        { $project : {_id: 0, fName: 1, lName: 1, phoneNumber: 1, zip: 1, distribution_id: 1} },
+        { $project : {_id: 0, fName: 1, lName: 1, phoneNumber: 1, distribution_id: 1} },
          { $lookup : {
             from : 'distribution',
             localField : 'distribution_id',
