@@ -6,6 +6,10 @@ Project options: Bread of life
 Use npm install to download the required modules to run the code
 Modules download include express, mongoose, dotenv, morgan, and cors
 
+You will also need a connection to the mongo database using a .env file.
+You may need to create one with: MONGO_URL = mongodb://localhost:27017/projectdb
+inside of it
+
 After packages are installed you must type 'node index.js' into the console
 in order to launch the backend. Make sure you are in the myapp directory.
 
