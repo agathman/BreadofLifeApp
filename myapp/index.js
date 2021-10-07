@@ -98,7 +98,7 @@ app.put('/client/:id', (req, res, next) => {
 });
 
 //Get all clients attending a specified event by distribution id
-app.get('/clientEvents/:distribution_id', (req, res, next) => {
+app.get('/clientEvents/:id', (req, res, next) => {
    
     //Converting String parameter into required int/number
     var stringID = req.params.id
@@ -106,7 +106,7 @@ app.get('/clientEvents/:distribution_id', (req, res, next) => {
 
     ClientModel.aggregate([
         { $match : { distribution_id : intID } },
-        { $project : { _id : 0, fname : 1 , lname : 1  }}
+        { $project : { _id : 0, fName : 1 , lName : 1  }}
             
     ], (error, data) => {
         if (error) {
@@ -212,6 +212,28 @@ app.get('/client-access/:id', (req, res, next) => {
         }
     });
 });
+
+
+//Retrieves the zip code of the clients participating in an event/distributor
+app.get('/clientLocale/:id', (req, res, next) => {
+   
+    //Converting String parameter into required int/number
+    var stringID = req.params.id
+    var intID = parseInt(stringID);
+
+    ClientModel.aggregate([
+        { $match : { distribution_id : intID } },
+        { $project : { _id : 0, zip : 1 }}
+            
+    ], (error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data);
+        }
+    });
+});
+
 
 //Listen to port
 app.listen(PORT, () => {
