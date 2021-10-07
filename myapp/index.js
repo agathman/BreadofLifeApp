@@ -165,8 +165,6 @@ app.put('/distribution/:id', (req, res, next) => {
     })
 });
 
-<<<<<<< HEAD
-=======
 //Get all distribution events
 app.get('/distributions',(req, res, next) => {
 //very plain way to get all the data from the collection through the mongoose schema
@@ -197,7 +195,6 @@ app.get('/findclient/:id', (req, res, next) => {
         }
     });
 });
->>>>>>> 70c4a629c5e8339cd43240df5b7ca56309eee9ce
 
 //Find all events a client has attended
 app.get('/client-access/:id', (req, res, next) => {
