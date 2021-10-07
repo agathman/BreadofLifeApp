@@ -97,18 +97,17 @@ app.put('/client/:id', (req, res, next) => {
     })
 });
 
-//Get client events
+//Get all clients attending a specified event by distribution id
 app.get('/clientEvents/:distribution_id', (req, res, next) => {
    
-    ClientModel.aggregate( [
-        { $match : { distribution_id : req.params.distribution_id } },
-        { $project : { _id : 0, fname: 1 , lname: 1 , phoneNumber: 1 }},
-        { $lookup : {
-            from: 'client',
-            localField : 'client.distribution_id',
-            foreignField : 'distribution.distribution_id',
-            as : 'client'
-        }}
+    //Converting String parameter into required int/number
+    var stringID = req.params.id
+    var intID = parseInt(stringID);
+
+    ClientModel.aggregate([
+        { $match : { distribution_id : intID } },
+        { $project : { _id : 0, fname : 1 , lname : 1  }}
+            
     ], (error, data) => {
         if (error) {
             return next(error)
@@ -118,18 +117,7 @@ app.get('/clientEvents/:distribution_id', (req, res, next) => {
     });
 });
 
-//Get all distribution events
-app.get('/distributions', (req, res, next) => {
-    //very plain way to get all the data from the collection through the mongoose schema
-    DistributionModel.find((error, data) => {
-        if (error) {
-          //here we are using a call to next() to send an error message back
-          return next(error)
-        } else {
-          res.json(data)
-        }
-      })
-});
+
 
 
 //Delete distribution by object id
