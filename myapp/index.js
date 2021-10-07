@@ -160,6 +160,20 @@ app.put('/distribution/:id', (req, res, next) => {
     })
 });
 
+//Get all distribution events
+app.get('/distributions',(req, res, next) => {
+//very plain way to get all the data from the collection through the mongoose schema
+DistributionModel.find((error,data) => {
+    if (error) {
+//here we are using a call to next() to send an error message back
+    return next(error)
+} 
+    else {
+    res.json(data)
+}
+})
+});
+
 // endpoint for retrieving client by _ID
 app.get('/findclient/:id', (req, res, next) => {
     console.log(req.params.id)
@@ -213,3 +227,4 @@ app.use(function (err, req, res, next) {
         err.statusCode = 500;
     res.status(err.statusCode).send(err.message);
 });
+
