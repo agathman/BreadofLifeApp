@@ -165,6 +165,39 @@ app.put('/distribution/:id', (req, res, next) => {
     })
 });
 
+<<<<<<< HEAD
+=======
+//Get all distribution events
+app.get('/distributions',(req, res, next) => {
+//very plain way to get all the data from the collection through the mongoose schema
+DistributionModel.find((error,data) => {
+    if (error) {
+//here we are using a call to next() to send an error message back
+    return next(error)
+} 
+    else {
+    res.json(data)
+}
+})
+});
+
+// endpoint for retrieving client by _ID
+app.get('/findclient/:id', (req, res, next) => {
+    console.log(req.params.id)
+
+    ClientModel.findById(req.params.id, (error, data) => {
+        if (error) {
+            return next(error)
+        } else if (data === null) {
+            // Sending 404 when not found something is a good practice
+          res.status(404).send('Client not found');
+        }
+        else {
+          res.json(data)
+        }
+    });
+});
+>>>>>>> 70c4a629c5e8339cd43240df5b7ca56309eee9ce
 
 //Find all events a client has attended
 app.get('/client-access/:id', (req, res, next) => {
@@ -202,3 +235,4 @@ app.use(function (err, req, res, next) {
         err.statusCode = 500;
     res.status(err.statusCode).send(err.message);
 });
+
