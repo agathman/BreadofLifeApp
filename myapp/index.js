@@ -77,7 +77,7 @@ app.post('/client', (req, res, next) => {
         if (error) {
             return next(error)
         } else {
-            res.json(date)
+            res.json(data)
             res.send('Client is added to database');
         }
     })
@@ -119,9 +119,9 @@ app.get('/clientEvents/:distribution_id', (req, res, next) => {
 });
 
 //Get all distribution events
-app.get('/distribution', (req, res, next) => {
+app.get('/distributions', (req, res, next) => {
     //very plain way to get all the data from the collection through the mongoose schema
-    ClientModel.find((error, data) => {
+    DistributionModel.find((error, data) => {
         if (error) {
           //here we are using a call to next() to send an error message back
           return next(error)
@@ -148,11 +148,11 @@ app.delete('/distribution/:id' , (req, res, next) => {
 //Add distribution
 app.post('/distribution', (req, res, next) => {
 
-    StudentModel.create(req.body, (error, data) => {
+    DistributionModel.create(req.body, (error, data) => {
         if (error) {
             return next(error)
         } else {
-            res.json(date)
+            res.json(data)
             res.send('Distribution is added to database');
         }
     })
@@ -160,7 +160,7 @@ app.post('/distribution', (req, res, next) => {
 
 //Update distribution bu distribution_id
 app.put('/distribution/:id', (req, res, next) => {
-    StudentModel.findOneAndUpdate({ distribution_id: req.params.id }, {
+    DistributionModel.findOneAndUpdate({ distribution_id: req.params.id }, {
         $set: req.body
     }, (error, data) => {
         if (error) {

@@ -23,10 +23,10 @@ let clientSchema = new Schema({
         required: true
     },
     phoneNumber: {
-      type: Number
+      type: String
     },
     reference: {
-      type: Number
+      type: String
     },
     zip: {
       type: Number
