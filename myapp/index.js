@@ -85,7 +85,7 @@ app.post('/client', (req, res, next) => {
 
 //Update client by clientID
 app.put('/client/:id', (req, res, next) => {
-    ClientModel.findOneAndUpdate({ clientID: req.params.id }, {
+    ClientModel.findOneAndUpdate({ client_id: req.params.id }, {
         $set: req.body
     }, (error, data) => {
         if (error) {
@@ -160,7 +160,7 @@ app.post('/distribution', (req, res, next) => {
 
 //Update distribution bu distribution_id
 app.put('/distribution/:id', (req, res, next) => {
-    StudentModel.findOneAndUpdate({ distributionID: req.params.id }, {
+    StudentModel.findOneAndUpdate({ distribution_id: req.params.id }, {
         $set: req.body
     }, (error, data) => {
         if (error) {
