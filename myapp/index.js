@@ -117,6 +117,23 @@ app.get('/clientEvents/:distribution_id', (req, res, next) => {
     });
 });
 
+// Find a distribution event by id
+app.get('/distribution/:id', (req, res, next) => {
+    var stringID = req.params.id
+    var intID = parseInt(stringID);
+
+    DistributionModel.findOne( { distribution_id : intID }, (error, data) => {
+        if (error) {
+            return next(error)
+        } else if (data === null) {
+          res.status(404).send('Student not found');
+        }
+        else {
+          res.json(data)
+        }
+    });
+});
+
 //Delete distribution by object id
 app.delete('/deleteDistribution/:id' , (req, res, next) => {
     DistributionModel.findByIdAndRemove(req.params.id, (error, data) => {
