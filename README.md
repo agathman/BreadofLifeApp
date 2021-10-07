@@ -126,18 +126,21 @@ Distribution data (past all into Postman using post http://localhost:3000/distri
     "distribution_id":1,
     "reliefType":"Food Distribution",
     "reliefDate":"September 4th",
-    "location":"BBVA stadium"
+    "location":"BBVA stadium",
+    "zip": 77505
     },
     {
     "distribution_id":2,
     "reliefType":"Ida disaster relief",
     "reliefDate":"September 8th",
-    "location":"Crawford Street"
+    "location":"Crawford Street",
+    "zip": 77007
     },
     {
     "distribution_id":3,
     "reliefType":"Food Distribution",
     "reliefDate":"October 9th",
-    "location":"Crawford Street"
+    "location":"Crawford Street",
+    "zip": 77009
     }
 ]
