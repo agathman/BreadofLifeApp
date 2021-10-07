@@ -20,6 +20,10 @@ let distributionSchema = new Schema({
     location: {
       type: String,
       required: true
+    },
+    zip: {
+      type: Number,
+      required: true
     }
   }, {
     collection: 'distribution'
