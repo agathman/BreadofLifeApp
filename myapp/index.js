@@ -233,6 +233,31 @@ app.get('/clientLocale/:id', (req, res, next) => {
     });
 });
 
+//Find distribution by zipcode
+app.get('/distributionZip/:id', (req, res, next) => {
+   
+    //Converting String parameter into required int/number
+    var stringID = req.params.id
+    var intID = parseInt(stringID);
+
+    ClientModel.aggregate([
+        { $match : { zip : intID } },
+        { $project : { _id : 0, zip : 1, distribution_id: 1, client_id: 1 }},
+        { $lookup : {
+            from : 'distribution',
+            localField : 'distribution_id',
+            foreignField : 'distribution_id',
+            as : 'distributions'
+        } }
+            
+    ], (error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data);
+        }
+    });
+});
 
 //Listen to port
 app.listen(PORT, () => {
