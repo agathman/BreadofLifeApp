@@ -30,6 +30,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(morgan("dev"));  //enable incoming request logging in dev mode
 
+//Get all clients
 app.get('/clients', (req, res, next) => {
     //very plain way to get all the data from the collection through the mongoose schema
     ClientModel.find((error, data) => {
@@ -42,6 +43,7 @@ app.get('/clients', (req, res, next) => {
       })
 });
 
+//Find client by object id
 app.get('/findClient/:id', (req, res, next) => {
     ClientModel.findById(req.params.id, (error, data) => {
         if (error) {
@@ -55,7 +57,7 @@ app.get('/findClient/:id', (req, res, next) => {
     })
 });
 
-
+//Delete client by object id
 app.delete('/deleteClient/:id' , (req, res, next) => {
     ClientModel.findByIdAndRemove(req.params.id, (error, data) => {
         if (error) {
@@ -68,7 +70,8 @@ app.delete('/deleteClient/:id' , (req, res, next) => {
     })
 });
 
-app.post('client', (req, res, next) => {
+//Add client
+app.post('/client', (req, res, next) => {
 
     ClientModel.create(req.body, (error, data) => {
         if (error) {
@@ -78,8 +81,9 @@ app.post('client', (req, res, next) => {
             res.send('Client is added to database');
         }
     })
-})
+});
 
+//Update client by clientID
 app.put('/client/:id', (req, res, next) => {
     ClientModel.findOneAndUpdate({ clientID: req.params.id }, {
         $set: req.body
@@ -93,6 +97,7 @@ app.put('/client/:id', (req, res, next) => {
     })
 });
 
+//Get client events
 app.get('/clientEvents/:distribution_id', (req, res, next) => {
    
     ClientModel.aggregate( [
@@ -113,6 +118,7 @@ app.get('/clientEvents/:distribution_id', (req, res, next) => {
     });
 });
 
+//Get all distribution events
 app.get('/distribution', (req, res, next) => {
     //very plain way to get all the data from the collection through the mongoose schema
     ClientModel.find((error, data) => {
@@ -125,6 +131,8 @@ app.get('/distribution', (req, res, next) => {
       })
 });
 
+
+//Delete distribution by object id
 app.delete('/distribution/:id' , (req, res, next) => {
     DistributionModel.findByIdAndRemove(req.params.id, (error, data) => {
         if (error) {
@@ -137,7 +145,8 @@ app.delete('/distribution/:id' , (req, res, next) => {
     })
 });
 
-app.post('distribution', (req, res, next) => {
+//Add distribution
+app.post('/distribution', (req, res, next) => {
 
     StudentModel.create(req.body, (error, data) => {
         if (error) {
@@ -149,6 +158,7 @@ app.post('distribution', (req, res, next) => {
     })
 })
 
+//Update distribution bu distribution_id
 app.put('/distribution/:id', (req, res, next) => {
     StudentModel.findOneAndUpdate({ distributionID: req.params.id }, {
         $set: req.body
@@ -179,7 +189,7 @@ app.get('/findclient/:id', (req, res, next) => {
     });
 });
 
-
+//Find all events a client has attended
 app.get('/client-access/:id', (req, res, next) => {
 
     var stringID = req.params.id;
@@ -203,7 +213,7 @@ app.get('/client-access/:id', (req, res, next) => {
     });
 });
 
-
+//Listen to port
 app.listen(PORT, () => {
     console.log("Server started listening on port : ", PORT);
   });
