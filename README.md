@@ -9,8 +9,37 @@ Modules download include express, mongoose, dotenv, morgan, and cors
 After packages are installed you must type 'node index.js' into the console
 in order to launch the backend. Make sure you are in the myapp directory.
 
-We have included code in this readme that can copied into Postman to insert
+We have included code in this readme that can copy into Postman to insert
 sample data used for the project. Make sure you are posting raw JSON data.
+
+To create data: You must copy the JSON data below. You may create your own entries
+or simply paste the JSON into the post field in Postman using the urls
+http://localhost:3000/client and http://localhost:3000/distribution
+
+To read data: To get all clients you must use the get in Postman
+you may use the urls http://localhost:3000/clients to get all clients
+and http://localhost:3000/distributions to get all distributions
+
+Update:
+
+Delete: For deleting documents we used delete by object id.
+To do this you may need to use get clients/distributions to see which specific object id you 
+need to delete. To delete you use the urls http://localhost:3000/deleteClient/:id and 
+http://localhost:3000/deleteDistribution/:id with :id being the object id of the document
+
+We have also created some functions that are required for Bread of Life.
+One for getting clients using distribution_id. Which can be used by using the url
+http://localhost:3000/clientEvents/:id in Postman with the id being the distribution_id.
+
+One to get ways each individual has accessed their services as well as their 
+distribution histories. This can be done by using the url http://localhost:3000/client-access/:id
+with :id being a client's client_id.
+
+And one for getting total activities by zip code. This can be done using the url 
+http://localhost:3000//clientLocale/:id in Postman with :id being the client's zip
+
+
+
 
 
 
