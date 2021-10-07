@@ -133,7 +133,7 @@ app.get('/distributions', (req, res, next) => {
 
 
 //Delete distribution by object id
-app.delete('/distribution/:id' , (req, res, next) => {
+app.delete('/deleteDistribution/:id' , (req, res, next) => {
     DistributionModel.findByIdAndRemove(req.params.id, (error, data) => {
         if (error) {
             return next(error);
