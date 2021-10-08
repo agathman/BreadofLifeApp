@@ -13,6 +13,11 @@ inside of it
 After packages are installed you must type 'node index.js' into the console
 in order to launch the backend. Make sure you are in the myapp directory.
 
+We have included a file called ProjectPostman.postman_collection.json
+this can be used to test endpoints that we have created.
+To find out more information or go through the process manually you
+can continue to follow the rest of the readme.
+
 We have included code in this readme that can copy into Postman to insert
 sample data used for the project. Make sure you are posting raw JSON data.
 
@@ -88,7 +93,7 @@ Client data (paste all into Postman using post http://localhost:3000/client):
 },
 {
     "client_id":3,
-    "distribution_id":3,
+    "distribution_id":2,
     "fName":"Jack",
     "lName":"Jones",
     "phoneNumber":"832-741-6758",
