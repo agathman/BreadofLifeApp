@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "9a628450-f52e-4d6e-8941-0b45bbf2bdfc",
+		"name": "ProjectPostman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post Client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n{\r\n    \"client_id\":1,\r\n    \"distribution_id\":1,\r\n    \"fName\":\"John\",\r\n    \"lName\":\"Doe\",\r\n    \"phoneNumber\":\"832-951-7412\",\r\n    \"reference\":\"Facebook\",\r\n    \"zip\":77009,\r\n    \"takeVaccine\":1,\r\n    \"vaccinePreference\":\"Pfizer\",\r\n    \"vaccineReceived\":0,\r\n    \"additionalServices\":0,\r\n    \"children\":1,\r\n    \"senior\":0,\r\n    \"veteran\":1,\r\n    \"ethnicity\":\"Multi or Biracial\"\r\n},\r\n{\r\n    \"client_id\":2,\r\n    \"distribution_id\":2,\r\n    \"fName\":\"Jane\",\r\n    \"lName\":\"Doe\",\r\n    \"phoneNumber\":\"832-567-1242\",\r\n    \"reference\":\"Instagram\",\r\n    \"zip\":77505,\r\n    \"takeVaccine\":0,\r\n    \"vaccinePreference\":null,\r\n    \"vaccineReceived\":null,\r\n    \"additionalServices\":0,\r\n    \"children\":1,\r\n    \"senior\":0,\r\n    \"veteran\":0,\r\n    \"ethnicity\":\"White or Caucasian\"\r\n},\r\n{\r\n    \"client_id\":3,\r\n    \"distribution_id\":2,\r\n    \"fName\":\"Jack\",\r\n    \"lName\":\"Jones\",\r\n    \"phoneNumber\":\"832-741-6758\",\r\n    \"reference\":\"Twitter\",\r\n    \"zip\":77007,\r\n    \"takeVaccine\":1,\r\n    \"vaccinePreference\":\"Moderna\",\r\n    \"vaccineReceived\":0,\r\n    \"additionalServices\":1,\r\n    \"children\":3,\r\n    \"senior\":1,\r\n    \"veteran\":0,\r\n    \"ethnicity\":\"Hispanic or Latino\"\r\n},\r\n{\r\n    \"client_id\":1,\r\n    \"distribution_id\":2,\r\n    \"fName\":\"John\",\r\n    \"lName\":\"Doe\",\r\n    \"phoneNumber\":\"832-951-7412\",\r\n    \"reference\":\"Facebook\",\r\n    \"zip\":77009,\r\n    \"takeVaccine\":1,\r\n    \"vaccinePreference\":\"Pfizer\",\r\n    \"vaccineReceived\":1,\r\n    \"additionalServices\":0,\r\n    \"children\":1,\r\n    \"senior\":0,\r\n    \"veteran\":1,\r\n    \"ethnicity\":\"Multi or Biracial\"\r\n},\r\n{\r\n    \"client_id\":1,\r\n    \"distribution_id\":3,\r\n    \"fName\":\"John\",\r\n    \"lName\":\"Doe\",\r\n    \"phoneNumber\":\"832-951-7412\",\r\n    \"reference\":\"Facebook\",\r\n    \"zip\":77009,\r\n    \"takeVaccine\":1,\r\n    \"vaccinePreference\":\"Pfizer\",\r\n    \"vaccineReceived\":1,\r\n    \"additionalServices\":0,\r\n    \"children\":1,\r\n    \"senior\":0,\r\n    \"veteran\":1,\r\n    \"ethnicity\":\"Multi or Biracial\"\r\n},\r\n{\r\n    \"client_id\":3,\r\n    \"distribution_id\":3,\r\n    \"fName\":\"Jack\",\r\n    \"lName\":\"Jones\",\r\n    \"phoneNumber\":\"832-741-6758\",\r\n    \"reference\":\"Twitter\",\r\n    \"zip\":77007,\r\n    \"takeVaccine\":1,\r\n    \"vaccinePreference\":\"Moderna\",\r\n    \"vaccineReceived\":1,\r\n    \"additionalServices\":1,\r\n    \"children\":3,\r\n    \"senior\":1,\r\n    \"veteran\":0,\r\n    \"ethnicity\":\"Hispanic or Latino\"\r\n}\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/client",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"client"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Distribution",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n    \"distribution_id\":1,\r\n    \"reliefType\":\"Food Distribution\",\r\n    \"reliefDate\":\"September 4th\",\r\n    \"location\":\"BBVA stadium\",\r\n    \"zip\": 77505\r\n    },\r\n    {\r\n    \"distribution_id\":2,\r\n    \"reliefType\":\"Ida disaster relief\",\r\n    \"reliefDate\":\"September 8th\",\r\n    \"location\":\"Crawford Street\",\r\n    \"zip\": 77007\r\n    },\r\n    {\r\n    \"distribution_id\":3,\r\n    \"reliefType\":\"Food Distribution\",\r\n    \"reliefDate\":\"October 9th\",\r\n    \"location\":\"Crawford Street\",\r\n    \"zip\": 77009\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/distribution",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"distribution"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Clients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/clients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Distributions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/distributions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"distributions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get client by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/findclient/615f916f9ee4d2b01c373c34",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"findclient",
+						"615f916f9ee4d2b01c373c34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dist by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/distribution/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"distribution",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Clients at Event",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/clientEvents/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"clientEvents",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Distribution Histories by Client id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/client-access/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"client-access",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dist by Zip",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/distributionZip/77505",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"distributionZip",
+						"77505"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Client",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"_id\": \"615f47cb787d8b2605574d59\",\r\n        \"client_id\": 2,\r\n        \"distribution_id\": 2,\r\n        \"fName\": \"Jane\",\r\n        \"lName\": \"Moe\",\r\n        \"phoneNumber\": \"832-567-7485\",\r\n        \"reference\": \"Facebook\",\r\n        \"zip\": 77505,\r\n        \"takeVaccine\": false,\r\n        \"vaccinePreference\": null,\r\n        \"vaccineReceived\": null,\r\n        \"additionalServices\": false,\r\n        \"children\": 2,\r\n        \"senior\": false,\r\n        \"veteran\": false,\r\n        \"ethnicity\": \"White or Caucasian\",\r\n        \"__v\": 0\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/client/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"client",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Distribution",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"_id\": \"615f4663fb4c3ae7842e02fd\",\r\n        \"distribution_id\": 2,\r\n        \"reliefType\": \"James disaster relief\",\r\n        \"location\": \"Main Street\",\r\n        \"zip\": 77007,\r\n        \"__v\": 0\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/distribution/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"distribution",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Client",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/deleteClient/615f47cb787d8b2605574d58",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"deleteClient",
+						"615f47cb787d8b2605574d58"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Distribution",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/deleteDistribution/615f4663fb4c3ae7842e02fc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"deleteDistribution",
+						"615f4663fb4c3ae7842e02fc"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
