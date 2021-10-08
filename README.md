@@ -14,7 +14,7 @@ After packages are installed you must type 'node index.js' into the console
 in order to launch the backend. Make sure you are in the myapp directory.
 
 We have included a file called ProjectPostman.postman_collection.json
-in the myapp directory this can be used to test endpoints that we have created.
+in the project-cis_4339_project_36 directory this can be used to test endpoints that we have created.
 To find out more information or go through the process manually you
 can continue to follow the rest of the readme.
 
