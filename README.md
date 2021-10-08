@@ -24,7 +24,10 @@ To read data: To get all clients you must use the get in Postman
 you may use the urls http://localhost:3000/clients to get all clients
 and http://localhost:3000/distributions to get all distributions
 
-Update:
+Update: We used update using client_id or distribution_id
+Use the urls http://localhost:3000/client/:id and
+http://localhost:3000/distribution/
+using the client/distribution id for :id then change the field/fields you want
 
 Delete: For deleting documents we used delete by object id.
 To do this you may need to use get clients/distributions to see which specific object id you 
