@@ -12,6 +12,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="distribution in Distribution" :key="distribution._id">
+                        <td>{{ distribution.distribution_id }}</td>
                         <td>{{ distribution.reliefType }}</td>
                         <td>{{ distribution.reliefDate }}</td>
                         <td>{{ distribution.location }}</td>
