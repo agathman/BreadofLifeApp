@@ -9,7 +9,7 @@ const routes = [
     },
     {
       path: '/createClient',
-      name: 'createEvent',
+      name: 'createClient',
       component: () => import('../components/CreateClientComponent')
     },
     {

@@ -22,8 +22,8 @@
               >
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/viewEvent"
-                >View Event</router-link
+              <router-link class="nav-link" to="/viewEvents"
+                >View Events</router-link
               >
             </li>
           </ul>
