@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '@/views/Home.vue'
+import Home from '../views/Home.vue'
 
 
 const routes = [
@@ -9,9 +9,15 @@ const routes = [
     component: Home
     },
     {
+<<<<<<< HEAD
       path: '/signUp',
       name: 'signUp',
       component: () => import('../components/SignUp')
+=======
+      path: '/createClient',
+      name: 'createClient',
+      component: () => import('../components/CreateClientComponent')
+>>>>>>> 6661face85ce2ec71457c27b76c6f9da8a784f82
     },
     {
       path: '/createEvent',

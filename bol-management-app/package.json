@@ -10,7 +10,13 @@
   "dependencies": {
     "axios": "^0.24.0",
     "bootstrap": "^5.1.3",
+<<<<<<< HEAD
     "core-js": "^3.6.5",
+=======
+    "bootstrap-vue": "^2.21.2",
+    "bootstrap-vue-3": "0.0.5",
+    "core-js": "^3.19.1",
+>>>>>>> 6661face85ce2ec71457c27b76c6f9da8a784f82
     "vue": "^3.0.0",
     "vue-router": "^4.0.12"
   },

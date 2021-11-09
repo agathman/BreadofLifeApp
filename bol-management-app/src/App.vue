@@ -7,9 +7,15 @@
         <div class="collapse navbar-collapse" >
           <ul class="navbar-nav">
             <li class="nav-item">
+<<<<<<< HEAD
               <router-link class="nav-link" to="/signUp">
               Sign Up for Distribution
               </router-link>
+=======
+              <router-link class="nav-link" to="/createClient"
+                >Create Client</router-link
+              >
+>>>>>>> 6661face85ce2ec71457c27b76c6f9da8a784f82
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/createEvent"
@@ -22,8 +28,8 @@
               >
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/viewEvent"
-                >View Event</router-link
+              <router-link class="nav-link" to="/viewEvents"
+                >View Events</router-link
               >
             </li>
           </ul>
