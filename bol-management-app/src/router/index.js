@@ -9,11 +9,6 @@ const routes = [
     component: Home
     },
     {
-<<<<<<< HEAD
-      path: '/signUp',
-      name: 'signUp',
-      component: () => import('../components/SignUp')
-=======
       path: '/createClient',
       name: 'createClient',
       component: () => import('../components/CreateClientComponent')
