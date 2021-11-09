@@ -7,6 +7,11 @@
         <div class="collapse navbar-collapse" >
           <ul class="navbar-nav">
             <li class="nav-item">
+              <router-link class="nav-link" to="/signUp">
+              Sign Up for Distribution
+              </router-link>
+            </li>
+            <li class="nav-item">
               <router-link class="nav-link" to="/createEvent"
                 >Create Event</router-link
               >
@@ -32,3 +37,12 @@
     </div>
   </div>
 </template>
+
+<script>
+
+</script>
+
+<style>
+@import '~bootstrap/dist/css/bootstrap.css';
+
+</style>
