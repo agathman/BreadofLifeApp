@@ -78,7 +78,6 @@ app.post('/client', (req, res, next) => {
             return next(error)
         } else {
             res.json(data);
-            res.json(data)
         }
     })
 });

@@ -10,8 +10,6 @@
               <router-link class="nav-link" to="/signUp">
               Sign Up for Distribution
               </router-link>
-              <router-link class="nav-link" to="/createClient"
-                >Create Client</router-link
               >
             </li>
             <li class="nav-item">
@@ -19,7 +17,22 @@
                 >Create Event</router-link
               >
             </li>
-            <li class="nav-item">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                View Lists
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li class="nav-item">
               <router-link class="nav-link" to="/viewClients"
                 >View Clients</router-link
               >
@@ -28,6 +41,13 @@
               <router-link class="nav-link" to="/viewEvents"
                 >View Events</router-link
               >
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/viewClientEvent"
+                >View Clients at Event</router-link
+              >
+            </li>
+              </ul>
             </li>
           </ul>
         </div>
