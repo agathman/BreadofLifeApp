@@ -4,6 +4,7 @@
             <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>
+                        <th>Client ID</th>
                         <th>Distribution ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -21,6 +22,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="client in Clients" :key="client._id">
+                        <td>{{ client.client_id }}</td>
                         <td>{{ client.distribution_id }}</td>
                         <td>{{ client.fName }}</td>
                         <td>{{ client.lName }}</td>
@@ -34,11 +36,6 @@
                         <td>{{ client.senior }}</td>
                         <td>{{ client.veteran }}</td>
                         <td>{{ client.ethnicity }}</td>
-                        <td>
-                            <router-link :to="{name: 'edit', params: { id: client._id }}" class="btn btn-success ">Edit
-                            </router-link>
-                        <button @click.prevent="deleteClient(client._id)" class="btn btn-danger mx-2">Delete</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -46,7 +43,7 @@
     </div>
 </template>
 
-<!--
+
 <script>
     import axios from "axios";
 
@@ -64,25 +61,10 @@
             }).catch(error => {
                 console.log(error)
             });
-        },
-        methods: {
-            deleteClient(id){
-                console.log(id)
-                let apiURL = `http://localhost:3000/client/${id}`;
-                let indexOfArrayItem = this.Clients.findIndex(i => i._id === id);
-
-                if (window.confirm("Do you really want to delete?")) {
-                    axios.delete(apiURL).then(() => {
-                        this.Clients.splice(indexOfArrayItem, 1);
-                    }).catch(error => {
-                        console.log(error)
-                    });
-                }
-            }
         }
     }
 </script>
--->
+
 
 <style>
     .btn-success {

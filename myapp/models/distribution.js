@@ -15,7 +15,7 @@ let distributionSchema = new Schema({
       required: true
     },
     reliefDate: {
-      date: String,
+      type: String,
     },
     location: {
       type: String,

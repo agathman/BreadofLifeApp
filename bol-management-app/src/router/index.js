@@ -12,11 +12,14 @@ const routes = [
       path: '/signUp',
       name: 'signUp',
       component: () => import('../components/SignUp')
+<<<<<<< HEAD
     },
     {
       path: '/createClient',
       name: 'createClient',
       component: () => import('../components/CreateClientComponent')
+=======
+>>>>>>> 19d63469362712802d0d8076700d5b8dd3b410da
     },
     {
       path: '/createEvent',
