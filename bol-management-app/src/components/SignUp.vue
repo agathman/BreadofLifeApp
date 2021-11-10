@@ -7,103 +7,54 @@
    <div class="form-group">
      <h1>Distribution Sign Up</h1>
     
-  <DistSelected v-bind:distribution_id="client.distribution_id" @changeSelection="ChangeT($event)" /> 
+<DistSelected v-bind:distribution_id="client.distribution_id" @changeSelection="changeD($event)" /> 
 
-    <label class="font-weight-bold">2. First Name *</label>
-    <input type="text" class="form-control" v-model="client.fName" required>
-    <label class="font-weight-bold">3. Last Name *</label>
-    <input type="text" class="form-control" v-model="client.lName" required>
-    <label class="font-weight-bold">4. Phone Number *</label>
-     <input type="tel" class="form-control" pattern="^\d{3}-\d{3}-\d{4}$"
-                    placeholder="XXX-XXX-XXXX" aria-describedby="phoneHelpBlock" v-model="client.phoneNumber" required>
+<label class="font-weight-bold">2. First Name *</label>
+<input type="text" class="form-control" v-model="client.fName" required>
+<label class="font-weight-bold">3. Last Name *</label>
+<input type="text" class="form-control" v-model="client.lName" required>
+<label class="font-weight-bold">4. Phone Number *</label>
+<input type="tel" class="form-control" pattern="^\d{3}-\d{3}-\d{4}$"
+                    placeholder="XXX-XXX-XXXX" aria-describedby="phoneHelpBlock" v-model="client.phoneNumber" >
                     <small id="phoneHelpBlock" class="form-text text-muted">
                             10 digit phone number should be entered with dashes
                     </small>
-            <br>
-            <br>
-
-            <RefCheckBox v-bind:checkedNames="client.reference" />
-            
-            <small>Check all that apply</small>
-            <br>
-            <!--
-  <div class="form-group form-check">
-  <input class="form-check-input" type="checkbox" value="Facebook" id="Facebook" v-model="client.reference">
-  <label class="form-check-label" for="Facebook">
-      Facebook
-  </label>
-  </div>
-<div class="form-group form-check">
-  <input class="form-check-input" type="checkbox" value="Instagram" id="Instagram" v-model="client.reference">
-  <label class="form-check-label" for="Instagram">
-    Instagram
-  </label>
-  </div>
-  <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="Twitter" id="flexCheckDefault"  >
-  <label class="form-check-label" for="flexCheckChecked">
-    Twitter  </label>
-  </div>
-  <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="WordOfMouth" id="flexCheckDefault" >
-  <label class="form-check-label" for="flexCheckChecked">
-    Word of Mouth
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="KMAZ" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckChecked">
-    KMAZ 102.5 FM
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="Other" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckChecked">
-    Other
-  </label>
-  <input type="text" class="form-control" name="other" v-model="client.reference">
-</div>
-
-<label class="font-weight-bold">Zip Code *</label>
-<input type="text" class="form-control" v-model="client.zip" required>
 <br>
--->
+<br>
+        
+<RefCheckBox v-bind:selected="client.reference" @RefSelections="changeR($event)" />
+            
+           
+            <br>
+ 
+<label class="font-weight-bold">5. Zip Code *</label>
+<input type="text" class="form-control" v-model="client.zip" >
+<br>
 
-<!-- Formatting needed -->
-<label class="font-weight-bold">Would you like the COVID vaccine on during the distribution? *</label>
+
+
+<label class="font-weight-bold">6. Would you like the COVID vaccine on during the distribution? *</label>
 <br>
 <small>During the distribution we will also provide free COVID vaccines on the campus.</small>
 <br>
-<br>
-<YesNoCheck v-bind:selected="client.takeVaccine" @YesNoSelection="yesNo($event)"/>
-<!--
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="Yes" id="flexCheckDefault" >
-  <label class="form-check-label" for="flexCheckChecked">
-    Yes <small> Skip to question 7 </small>
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="No" id="flexCheckDefault" >
-  <label class="form-check-label" for="flexCheckChecked">
-    No <small> Skip to question 8 </small>
-  </label>
-</div>
--->
-  <br>
-  <!-- Formatting needed -->
-  <h3> COVID Vaccine Preference </h3>
-  <br>
-  <VaccinePref v-bind:checked="client.vaccinePreference"/>
-  <!-- Formatting needed -->
-  <small>Skip to question 9</small>
-  <br>
-  <br>
+<br>                                                  
 
-  <label class="font-weight-bold">8. Have you received the COVID vaccine? *</label>
-    <br>
-    <br>
-    <YesNoCheck v-bind:checked="client.vaccineReceived"/>
+<YesNoCheck  v-bind:selected="client.takeVaccine" @YesNoSelection="changeTakeVaccine($event)" />
+
+<br>
+
+<h3> COVID Vaccine Preference </h3>
+<br>
+<VaccinePref v-bind:selected="client.vaccinePreference" @VacPref="changeVP($event)" />
+
+<small>Skip to question 9</small>
+<br>
+<br>
+
+<label class="font-weight-bold">8. Have you received the COVID vaccine? *</label>
+<br>
+<br>
+<YesNoCheck  v-bind:selected="client.vaccineReceived" @YesNoSelection="changeVR($event)" />
     
 <br>
 <h3>Additional Supportive Services</h3>
@@ -112,7 +63,7 @@
 <label class="font-weight-bold"> 9. Are you in need of additional supportive services (e.g. utility assistance, rental assistance, housing, nutritional support, etc.)? * </label>
 <br>
 <br>
-<YesNoCheck v-bind:checked="client.additionalServices" />
+<YesNoCheck v-bind:selected="client.additionalServices" @YesNoSelection="changeAS($event)" />
 
 <br>
 <span class="font-weight-bold">Additional Questions</span>
@@ -126,17 +77,17 @@
 <label class="font-weight-bold">11. Are you or anyone in your household 65+ in age? *</label>
 <br>
 <br>
-<YesNoCheck v-bind:checked="client.senior"/>
+<YesNoCheck v-bind:selected="client.senior"  @YesNoSelection="changeS($emit)" />
 <br>
 
 <label class="font-weight-bold"> Are you a veteren? * </label>
 <br>
 <br>
-<YesNoCheck v-bind:checked="client.veteran"/>
+<YesNoCheck v-bind:selected="client.veteran" @YesNoSelection="changeV($event)" />
 <br>
 <label class="font-weight-bold">Which of the following best describes you? * </label>
-<br>
-<EthnicityCheck v-bind:checked="client.ethnicity"/>
+<br>                                                          
+<EthnicityCheck v-bind:checked="client.ethnicity" @EthnicitySelection="changeE($event)"/>
 
   <p v-if="errors.length">
                     <b>Please correct the following error(s):</b>
@@ -181,21 +132,42 @@
                    zip: '',
                    takeVaccine: '',
                    vaccinePreference: '',
-                   vaccineReceived: Boolean,
-                   additionalServices: Boolean,
+                   vaccineReceived: '',
+                   additionalServices: '',
                    children: '',
-                   senior: Boolean,
-                   veteran: Boolean,
-                   ethnicity: Boolean,
+                   senior: '',
+                   veteran: '',
+                   ethnicity: '',
                 }
             }
         },
         methods: {
-          ChangeT(selectedDistribution_id) {
+          changeD(selectedDistribution_id) {
             this.client.distribution_id = selectedDistribution_id;
           },
-          yesNo(selectedCheck) {
+          changeTakeVaccine(selectedCheck) {
             this.client.takeVaccine = selectedCheck;
+          },
+          changeE(selected) {
+            this.client.ethnicity = selected;
+          },
+          changeR(selected) {
+            this.client.reference = selected;
+          },
+          changeVP(selected) {
+            this.client.vaccinePreference = selected;
+          },
+          changeVR(selected) {
+            this.client.vaccineReceived = selected;
+          },
+          changeAS(selected) {
+            this.client.additionalServices = selected;
+          },
+          changeS(selected) {
+            this.client.senior = selected;
+          },
+          changeV(selected) {
+            this.client.veteran = selected;
           },
             handleSubmitForm() {
                 //first validation

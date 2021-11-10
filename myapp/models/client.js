@@ -26,7 +26,7 @@ let clientSchema = new Schema({
       type: String
     },
     reference: {
-      type: String
+      type: [String]
     },
     zip: {
       type: Number
@@ -39,19 +39,19 @@ let clientSchema = new Schema({
       type: String
     },
     vaccineReceived: {
-      type: Boolean
+      type: String
     },
     additionalServices: {
-      type: Boolean
+      type: String
     },
     children: {
       type: Number
     },
     senior: {
-      type: Boolean
+      type: String
     },
     veteran: {
-      type: Boolean
+      type: String
     },
     ethnicity: {
       type: String

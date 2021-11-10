@@ -1,17 +1,18 @@
 <!-- Found solution at https://bootstrap-vue.org/docs/components/form-checkbox -->
 <template>
-<div class="checkRef">
-<input type="checkbox" class="form-check-input" id="Facebook" value="Facebook" v-model="checkedNames">
-<label for="Facebook">Facebook</label>
-<input type="checkbox" class="form-check-input" id="Instagram" value="Instagram" v-model="checkedNames">
-<label for="Instagram">Instagram</label>
-<input type="checkbox" class="form-check-input" id="Twitter" value="Twitter" v-model="checkedNames">
-<label for="Twitter">Twitter</label>
-<input type="checkbox" class="form-check-input" id="Word of Mouth" value="Word of Mouth" v-model="checkedNames">
-<label for="wordofmouth">Word of Mouth</label>
-<input type="checkbox" class="form-check-input" id="KMAZ" value="KMAZ" v-model="checkedNames">
-<label for="KMAZ">KMAZ 102.5 FM</label>
-<br>
+<div>
+  <b-form-group label="4. How did you hear about our distribution?" v-slot="{ ariaDescribedby }">
+      <small>Check all that apply</small>
+      <b-form-checkbox-group
+        id="checkbox-group-1"
+        v-model="selected"
+        :options="options"
+        @change='passEvent'
+        :aria-describedby="ariaDescribedby"
+        name="flavour-1"
+      ></b-form-checkbox-group>
+    </b-form-group>
+
 </div>
 
 </template>
@@ -21,8 +22,21 @@ export default{
    el: 'checkRef',
    data()  {
        return {
-       checkedNames: []
+       selected: [],
+       options: [
+          { text: 'Facebook', value: 'Facebook' },
+          { text: 'Instagram', value: 'Instagram' },
+          { text: 'Twitter', value: 'Twitter' },
+          { text: 'Word of Mouth', value: 'Word of Mouth' },
+          { text: 'KMAZ 102.5 FM', value: 'KMAZ 102.5 FM' }
+       ]
    }
-   } 
+   },
+   methods:{
+    passEvent()
+    {
+      this.$emit('RefSelections', this.selected)
+    }
+  } 
 }
 </script>

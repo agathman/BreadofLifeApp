@@ -1,34 +1,39 @@
-<!-- Found solution at https://bootstrap-vue.org/docs/components/form-checkbox -->
-<template>
-    <div>
-        <small>Check only one box</small>
-        <b-form-group>
-        <b-form-checkbox-group
-        id="checkboxRef"
-        v-model="selected"
-        :options="options"
-        >
-        </b-form-checkbox-group>
-        </b-form-group>
-    </div>
 
+<template>
+   <div class="form-check">
+     <input type="radio" class="form-check-input" id="one" value="Asian or Pacific Islander" v-model="picked" @change='passEvent'>
+    <label for="one">Asian or Pacific Islander</label>
+<br>
+    <input type="radio" class="form-check-input" id="two" value="Black or African American" v-model="picked" @change='passEvent'>
+    <label for="two">Black or African American</label>   
+<br>
+     <input type="radio" class="form-check-input" id="three" value="Hispanic or Latino" v-model="picked" @change='passEvent'>
+    <label for="one">Hispanic or Latino</label>
+<br>
+    <input type="radio" class="form-check-input" id="four" value="White or Caucasian" v-model="picked" @change='passEvent'>
+    <label for="two">White or Caucasian</label>  
+<br>
+      <input type="radio" class="form-check-input" id="four" value="Multiracial or Biracial" v-model="picked" @change='passEvent'>
+    <label for="two">Multiracial or Biracial</label>  
+<br>
+      <input type="radio" class="form-check-input" id="four" value="A race/ethnicity not listed here" v-model="picked" @change='passEvent'>
+    <label for="two">A race/ethnicity not listed here</label>  
+
+   </div>
 </template>
 
 <script>
 export default{
     data() {
         return {
-            selected: [],
-            options: [
-                {text: 'Asian or Pacific Islander', value: 'Asian or Pacific Islander'},
-                {text: 'Black or African American', value: 'Black or African American'},
-                {text: 'Hispanic or Latino', value: 'Hispanic or Latino'},
-                {text: 'Native American or Alaskan Native', value: 'Native American or Alaskan Native'},
-                {text: 'White or Caucasian', value: 'White or Caucasian'},
-                {text: 'Multiracial or Biracial', value: 'Multiracial or Biracial'},
-                {text: 'A race/ethnicity not listed here', value: 'A race/ethnicity not listed here'}
-            ]
+            picked: '',
         }
+    },
+       methods:{
+    passEvent()
+    {
+      this.$emit('EthnicitySelection', this.picked)
     }
+  }
 }
 </script>

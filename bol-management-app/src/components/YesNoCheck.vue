@@ -1,18 +1,13 @@
 <!-- Found solution at https://bootstrap-vue.org/docs/components/form-checkbox -->
 <template>
-    <div>
-        <small>Mark only one box.</small>
-        <b-form-group >
-        <b-form-checkbox-group 
-        id="checkboxRef"
-        v-model="selected"
-        @change='passEvent'
-        >
-         <b-form-checkbox value="Yes">Yes</b-form-checkbox>
-        <b-form-checkbox value="No">No</b-form-checkbox>
-        </b-form-checkbox-group>
-        </b-form-group>
-    </div>
+    
+     <div class="form-check">
+     <input type="radio" class="form-check-input" id="one" value="Yes" v-model="selected" @change='passEvent'>
+    <label for="one">Yes</label>
+<br>
+    <input type="radio" class="form-check-input" id="two" value="No" v-model="selected" @change='passEvent'>
+    <label for="two">No</label>  
+   </div>
 
 </template>
 
@@ -20,14 +15,14 @@
 export default{
     data() {
         return {
-            selected: [],
+            selected: '',
         }
         
     },
      methods:{
     passEvent()
     {
-      this.$emit('YesNoSelection', this.selected[0])
+      this.$emit('YesNoSelection', this.selected)
     }
   }
 };
