@@ -32,6 +32,11 @@ const routes = [
       path: '/viewEvents',
       name: 'viewEvents',
       component: () => import('../components/ListEventsComponent')
+    },
+    {
+      path: '/viewClientEvent',
+      name: 'viewClientEvent',
+      component: () => import('../components/ListClientsAtEventComponent')
     }
 ]
 
