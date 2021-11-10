@@ -4,6 +4,7 @@
             <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>
+                        <th>Distribution ID</th>
                         <th>Relief Type</th>
                         <th>Relief Date</th>
                         <th>Location</th>
@@ -12,6 +13,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="distribution in Distribution" :key="distribution._id">
+                        <td>{{ distribution.distribution_id }}</td>
                         <td>{{ distribution.reliefType }}</td>
                         <td>{{ distribution.reliefDate }}</td>
                         <td>{{ distribution.location }}</td>
@@ -28,7 +30,7 @@
     </div>
 </template>
 
-<!--
+
 <script>
     import axios from "axios";
 
@@ -64,7 +66,7 @@
         }
     }
 </script>
--->
+
 
 <style>
     .btn-success {

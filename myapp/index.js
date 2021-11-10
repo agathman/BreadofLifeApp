@@ -78,7 +78,6 @@ app.post('/client', (req, res, next) => {
             return next(error)
         } else {
             res.json(data)
-            res.send('Client is added to database');
         }
     })
 });
@@ -155,7 +154,6 @@ app.post('/distribution', (req, res, next) => {
             return next(error)
         } else {
             res.json(data)
-            res.send('Distribution is added to database');
         }
     })
 })
