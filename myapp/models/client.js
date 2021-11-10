@@ -32,7 +32,7 @@ let clientSchema = new Schema({
       type: Number
     },
     takeVaccine: {
-      type: Boolean,
+      type: String,
       required: true
     },
     vaccinePreference: {

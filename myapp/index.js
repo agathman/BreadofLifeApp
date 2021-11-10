@@ -77,8 +77,7 @@ app.post('/client', (req, res, next) => {
         if (error) {
             return next(error)
         } else {
-            res.json(data)
-            res.send('Client is added to database');
+            res.json(data);
         }
     })
 });
@@ -258,6 +257,16 @@ app.get('/distributionZip/:id', (req, res, next) => {
         }
     });
 });
+
+app.get('/distSelections', (req, res, next) => {
+    DistributionModel.find({  }, (error, data) => {
+        if (error) {
+          return next(error)
+        } else {
+          res.json(data);
+        }
+    });
+  });
 
 //Listen to port
 app.listen(PORT, () => {
