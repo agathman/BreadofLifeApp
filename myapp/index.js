@@ -77,11 +77,7 @@ app.post('/client', (req, res, next) => {
         if (error) {
             return next(error)
         } else {
-<<<<<<< HEAD
             res.json(data);
-=======
-            res.json(data)
->>>>>>> 19d63469362712802d0d8076700d5b8dd3b410da
         }
     })
 });
