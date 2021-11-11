@@ -62,7 +62,7 @@ const routes = [
     {
       path: '/editClient',
       name: 'editClient',
-      component: () => import('../components/EditEventComponent')
+      component: () => import('../components/EditClientComponent')
     }
   
 ]

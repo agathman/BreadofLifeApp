@@ -44,18 +44,19 @@ app.get('/clients', (req, res, next) => {
 });
 
 //Find client by object id
-app.get('/findClient/:id', (req, res, next) => {
-    ClientModel.findById(req.params.id, (error, data) => {
+app.get('/client/:id', (req, res, next) => {
+    ClientModel.findOne({ _id: req.params.id}, (error, data) => {
         if (error) {
             return next(error)
         } else if (data === null) {
-            res.status(404).send('Client not Found');
+            // Sending 404 when not found something is a good practice
+          res.status(404).send('Client not found');
         }
         else {
           res.json(data)
         }
-    })
-});
+    });
+  });
 
 //Delete client by object id
 app.delete('/deleteClient/:id' , (req, res, next) => {
@@ -117,7 +118,7 @@ app.get('/clientEvents/:id', (req, res, next) => {
 });
 
 // Find a distribution event by id
-app.get('/distribution/:id', (req, res, next) => {
+/*app.get('/distribution/:id', (req, res, next) => {
     var stringID = req.params.id
     var intID = parseInt(stringID);
 
@@ -131,7 +132,21 @@ app.get('/distribution/:id', (req, res, next) => {
           res.json(data)
         }
     });
-});
+});*/
+
+app.get('/distribution/:id', (req, res, next) => {
+    DistributionModel.findOne({ _id: req.params.id}, (error, data) => {
+        if (error) {
+            return next(error)
+        } else if (data === null) {
+            // Sending 404 when not found something is a good practice
+          res.status(404).send('Distribution not found');
+        }
+        else {
+          res.json(data)
+        }
+    });
+  });
 
 //Delete distribution by object id
 app.delete('/deleteDistribution/:id' , (req, res, next) => {
