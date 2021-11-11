@@ -1,6 +1,5 @@
 <template>
 <div class="form-group">
-    <lable>1. For which distribution would you like to sign up for? * </lable>
     <div id="v-model-select">
     <select class="form-control" v-model="distribution_id" @change='passEvent' required>
     <option disabled value="" >Please select an option</option> 

@@ -6,7 +6,7 @@
 <form @submit.prevent="handleSubmitForm">
    <div class="form-group">
      <h1>Distribution Sign Up</h1>
-    
+    <lable>1. For which distribution would you like to sign up for? * </lable>
 <DistSelected v-bind:distribution_id="client.distribution_id" @changeSelection="changeD($event)" /> 
 
 <label class="font-weight-bold">2. First Name *</label>
@@ -21,7 +21,7 @@
                     </small>
 <br>
 <br>
-        
+        <label>"4. How did you hear about our distribution?"</label>
 <RefCheckBox v-bind:selected="client.reference" @RefSelections="changeR($event)" />
             
    

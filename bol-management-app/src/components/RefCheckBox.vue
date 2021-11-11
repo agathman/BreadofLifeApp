@@ -1,7 +1,7 @@
 <!-- Found solution at https://bootstrap-vue.org/docs/components/form-checkbox -->
 <template>
 <div>
-  <b-form-group label="4. How did you hear about our distribution?" v-slot="{ ariaDescribedby }">
+  <b-form-group v-slot="{ ariaDescribedby }">
       <small>Check all that apply</small>
       <b-form-checkbox-group
         id="checkbox-group-1"

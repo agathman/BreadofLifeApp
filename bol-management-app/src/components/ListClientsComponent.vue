@@ -42,9 +42,11 @@
                         <td>{{ client.veteran }}</td>
                         <td>{{ client.ethnicity }}</td>
                         <td>
-                            <router-link :to="{name: 'editClient', params: { id: client._id }}" class="btn btn-success ">Edit
+                            <div class="span2">
+                            <router-link :to="{name: 'editClient', params: { id: client._id }}" class="btn btn-block btn-success">Edit
                             </router-link>
-                        <button @click.prevent="deleteClient(client._id)" class="btn btn-danger mx-2">Delete</button>
+                        <button @click.prevent="deleteClient(client._id)" class="btn btn-danger btn-block">Delete</button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

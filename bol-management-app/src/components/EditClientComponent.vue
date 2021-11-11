@@ -5,8 +5,9 @@
  <div class="col-md-6">
 <form @submit.prevent="handleUpdateForm">
    <div class="form-group">
-     <h1>Distribution Sign Up</h1>
-    
+     <h1>Edit</h1> 
+     <h2>{{client.fName}}, {{client.lName}}</h2>
+    <label>Distribution</label>
 <DistSelected v-bind:distribution_id="client.distribution_id" @changeSelection="changeD($event)" /> 
 
 <label class="font-weight-bold">2. First Name *</label>
@@ -21,8 +22,8 @@
                     </small>
 <br>
 <br>
-        
-<RefCheckBox v-bind:selected="client.reference" @RefSelections="changeR($event)" />
+        <label>References</label>
+<RefCheckBox v-bind:selected="client.reference" v-model="client.reference" @RefSelections="changeR($event)" />
             
            
             <br>
@@ -34,8 +35,7 @@
 
 
 <label class="font-weight-bold">6. Would you like the COVID vaccine on during the distribution? *</label>
-<br>
-<small>During the distribution we will also provide free COVID vaccines on the campus.</small>
+
 <br>
 <br>                                                  
 
@@ -47,11 +47,10 @@
 <br>
 <VaccinePref v-bind:selected="client.vaccinePreference" @VacPref="changeVP($event)" />
 
-<small>Skip to question 9</small>
 <br>
 <br>
 
-<label class="font-weight-bold">8. Have you received the COVID vaccine? *</label>
+<label class="font-weight-bold">8. Received the COVID vaccine?</label>
 <br>
 <br>
 <YesNoCheck  v-bind:selected="client.vaccineReceived" @YesNoSelection="changeVR($event)" />
@@ -60,7 +59,7 @@
 <h3>Additional Supportive Services</h3>
 <br>
 
-<label class="font-weight-bold"> 9. Are you in need of additional supportive services (e.g. utility assistance, rental assistance, housing, nutritional support, etc.)? * </label>
+<label class="font-weight-bold"> 9. Additional supportive services (e.g. utility assistance, rental assistance, housing, nutritional support, etc.)? </label>
 <br>
 <br>
 <YesNoCheck v-bind:selected="client.additionalServices" @YesNoSelection="changeAS($event)" />
@@ -74,18 +73,18 @@
 <input type="number" class="form-control" v-model="client.children" required>
 <br>
 
-<label class="font-weight-bold">11. Are you or anyone in your household 65+ in age? *</label>
+<label class="font-weight-bold">11. 65+ in age </label>
 <br>
 <br>
 <YesNoCheck v-bind:selected="client.senior"  @YesNoSelection="changeS($emit)" />
 <br>
 
-<label class="font-weight-bold"> Are you a veteren? * </label>
+<label class="font-weight-bold"> Veteran? * </label>
 <br>
 <br>
 <YesNoCheck v-bind:selected="client.veteran" @YesNoSelection="changeV($event)" />
 <br>
-<label class="font-weight-bold">Which of the following best describes you? * </label>
+<label class="font-weight-bold">Ethnicity</label>
 <br>                                                          
 <EthnicityCheck v-bind:checked="client.ethnicity" @EthnicitySelection="changeE($event)"/>
 
