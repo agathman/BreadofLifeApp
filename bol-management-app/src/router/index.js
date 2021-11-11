@@ -47,6 +47,11 @@ const routes = [
       path: '/distZip',
       name: 'distZip',
       component: () => import('../components/ListDistByZipComponent')
+    },
+    {
+      path: '/editEvent',
+      name: 'editEvent',
+      component: () => import('../components/EditEventComponent')
     }
 ]
 

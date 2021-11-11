@@ -9,6 +9,7 @@
                         <th>Relief Date</th>
                         <th>Location</th>
                         <th>Zip</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -18,6 +19,11 @@
                         <td>{{ distribution.reliefDate }}</td>
                         <td>{{ distribution.location }}</td>
                         <td>{{ distribution.zip }}</td>
+                        <td>
+                            <router-link :to="{name: 'editEvent', params: { id: distribution._id }}" class="btn btn-success ">Edit
+                            </router-link>
+                        <button @click.prevent="deleteStudent(distribution._id)" class="btn btn-danger mx-2">Delete</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
