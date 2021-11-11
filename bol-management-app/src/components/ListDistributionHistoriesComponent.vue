@@ -12,9 +12,9 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Distribution ID</th>
-                        <th>Relief Type</th>
-                        <th>Relief Date</th>
-                        <th>Location</th>
+                        <!--<th>Relief Type</th>-->
+                        <!--<th>Relief Date</th>-->
+                        <!--<th>Location</th>-->
                     </tr>
                 </thead>
                 <tbody>
@@ -22,9 +22,9 @@
                         <td>{{ client.fName }}</td>
                         <td>{{ client.lName }}</td>
                         <td>{{ client.distribution_id }}</td>
-                        <td>{{ client.distributions }}</td>
-                        <td>{{ client.distributions.reliefDate }}</td>
-                        <td>{{ client.distributions.location }}</td>
+                        <!--<td>{{ client.distributions }}</td>-->
+                        <!--<td>{{ client.distributions.reliefDate }}</td>-->
+                        <!--<td>{{ client.distributions.location }}</td>-->
                     </tr>
                 </tbody>
             </table>
