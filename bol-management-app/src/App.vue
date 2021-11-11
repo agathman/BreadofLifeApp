@@ -12,6 +12,11 @@
               </router-link>
             </li>
             <li class="nav-item">
+              <router-link class="nav-link" to="/createClient"
+                >Create Client</router-link
+              >
+            </li>
+            <li class="nav-item">
               <router-link class="nav-link" to="/createEvent"
                 >Create Event</router-link
               >
