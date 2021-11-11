@@ -37,6 +37,16 @@ const routes = [
       path: '/viewClientEvent',
       name: 'viewClientEvent',
       component: () => import('../components/ListClientsAtEventComponent')
+    },
+    {
+      path: '/distHistory',
+      name: 'distHistory',
+      component: () => import('../components/ListDistributionHistoriesComponent')
+    },
+    {
+      path: '/distZip',
+      name: 'distZip',
+      component: () => import('../components/ListDistByZipComponent')
     }
 ]
 

@@ -8,6 +8,7 @@
                         <th>Distribution ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
+                        <th>Phone Number</th>
                         <th>Reference</th>
                         <th>Zip</th>
                         <th>Take Vaccine</th>
@@ -31,6 +32,7 @@
                         <td>{{ client.zip }}</td>
                         <td>{{ client.takeVaccine }}</td>
                         <td>{{ client.vaccinePreference }}</td>
+                        <td>{{ client.vaccineReceived }}</td>
                         <td>{{ client.additionalServices }}</td>
                         <td>{{ client.children }}</td>
                         <td>{{ client.senior }}</td>

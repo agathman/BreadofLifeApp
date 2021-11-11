@@ -47,6 +47,16 @@
                 >View Clients at Event</router-link
               >
             </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/distHistory"
+                >View Distribution History for Client</router-link
+              >
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/distZip"
+                >View Distribution By Zip Code</router-link
+              >
+            </li>
               </ul>
             </li>
           </ul>
