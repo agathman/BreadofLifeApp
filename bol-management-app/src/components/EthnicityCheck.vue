@@ -1,5 +1,9 @@
 
 <template>
+
+      <!-- Radio button component that is used as input into ethnicity field in the client collection
+            Radio button only allows for one input
+            When selection is made, the method passEvent() is used-->
    <div class="form-check">
      <input type="radio" class="form-check-input" id="one" value="Asian or Pacific Islander" v-model="picked" @change='passEvent'>
     <label for="one">Asian or Pacific Islander</label>
@@ -30,6 +34,7 @@ export default{
         }
     },
        methods:{
+ //Allows selection to be passed to the parent component
     passEvent()
     {
       this.$emit('EthnicitySelection', this.picked)

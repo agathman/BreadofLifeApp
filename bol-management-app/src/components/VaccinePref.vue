@@ -1,7 +1,10 @@
-<!-- Found solution at https://bootstrap-vue.org/docs/components/form-checkbox -->
+
 <template>
 <div> <label>7. Which COVID vaccine would you prefer to receive? *</label>
 <br>
+ <!-- Radio button component that is used multiple times as input into different fields in the client collection
+            Radio button only allows for one input (Moderna/Pfizer) 
+            When selection is made, the method passEvent() is used-->
           <small>Mark only one</small>
       <div class="form-check">
          
@@ -23,6 +26,7 @@ export default{
         }
     },
      methods:{
+        //Allows selection to be passed to the parent component
     passEvent()
     {
       this.$emit('VacPref', this.selected)

@@ -5,10 +5,12 @@
  <div class="col-md-6">
 <form @submit.prevent="handleSubmitForm">
    <div class="form-group">
-     <h1>Distribution Sign Up</h1>
+    
+    <h1>Distribution Sign Up</h1>
     <lable>1. For which distribution would you like to sign up for? * </lable>
+    <!-- Using the DistributorSelector Component and assigning ID to client -->
 <DistSelected v-bind:distribution_id="client.distribution_id" @changeSelection="changeD($event)" /> 
-
+<!-- Basic input fields -->
 <label class="font-weight-bold">2. First Name *</label>
 <input type="text" class="form-control" v-model="client.fName" required>
 <label class="font-weight-bold">3. Last Name *</label>
@@ -21,10 +23,9 @@
                     </small>
 <br>
 <br>
-        <label>"4. How did you hear about our distribution?"</label>
+<label>4. How did you hear about our distribution?</label>
+<!-- Using the RefCheckBox component and saving refs in an array in client collections -->
 <RefCheckBox v-bind:selected="client.reference" @RefSelections="changeR($event)" />
-            
-   
 <br>
  
 <label class="font-weight-bold">5. Zip Code *</label>
@@ -35,16 +36,18 @@
 
 <label class="font-weight-bold">6. Would you like the COVID vaccine on during the distribution? *</label>
 <br>
+
 <small>During the distribution we will also provide free COVID vaccines on the campus.</small>
 <br>
 <br>                                                  
-
+<!-- Using the YesNoCheck component and storing value of yes/no in client collection for that field -->
 <YesNoCheck  v-bind:selected="client.takeVaccine" @YesNoSelection="changeTakeVaccine($event)" />
 
 <br>
 
 <h3> COVID Vaccine Preference </h3>
 <br>
+<!--Using the VaccinePref component and storing value of moderna/pfizer in vaccinePreference field -->
 <VaccinePref v-bind:selected="client.vaccinePreference" @VacPref="changeVP($event)" />
 
 <small>Skip to question 9</small>
@@ -54,6 +57,7 @@
 <label class="font-weight-bold">8. Have you received the COVID vaccine? *</label>
 <br>
 <br>
+<!-- Using the YesNoCheck component and storing value of yes/no in client collection for that field -->
 <YesNoCheck  v-bind:selected="client.vaccineReceived" @YesNoSelection="changeVR($event)" />
     
 <br>
@@ -63,6 +67,7 @@
 <label class="font-weight-bold"> 9. Are you in need of additional supportive services (e.g. utility assistance, rental assistance, housing, nutritional support, etc.)? * </label>
 <br>
 <br>
+<!-- Using the YesNoCheck component and storing value of yes/no in client collection for that field -->
 <YesNoCheck v-bind:selected="client.additionalServices" @YesNoSelection="changeAS($event)" />
 
 <br>
@@ -77,18 +82,22 @@
 <label class="font-weight-bold">11. Are you or anyone in your household 65+ in age? *</label>
 <br>
 <br>
+<!-- Using the YesNoCheck component and storing value of yes/no in client collection for that field -->
 <YesNoCheck v-bind:selected="client.senior"  @YesNoSelection="changeS($emit)" />
 <br>
 
 <label class="font-weight-bold">12. Are you a veteran? * </label>
 <br>
 <br>
+<!-- Using the YesNoCheck component and storing value of yes/no in client collection for that field -->
 <YesNoCheck v-bind:selected="client.veteran" @YesNoSelection="changeV($event)" />
 <br>
 <label class="font-weight-bold">13. Which of the following best describes you? * </label>
-<br>                                                          
+<br>                
+<!-- Using the EthnicityCheck component to store one value in ethnicity field in client collection -->                                          
 <EthnicityCheck v-bind:checked="client.ethnicity" @EthnicitySelection="changeE($event)"/>
 
+<!--Checking for errors or incomplete forms input -->
   <p v-if="errors.length">
                     <b>Please correct the following error(s):</b>
                     <ul>
@@ -106,6 +115,7 @@
 </template>
 
 <script>
+// Importing components
     import axios from "axios";
     import RefCheckBox from './RefCheckBox.vue';
     import YesNoCheck from './YesNoCheck.vue';
@@ -144,6 +154,8 @@
                 }
             }
         },
+        //Methods that take input from individual components and store them var that can be used to post a new client
+        //On change of that particular field (checkbox/radio/select) value is passed from component into client to be posted
         methods: {
           changeD(selectedDistribution_id) {
             this.client.distribution_id = selectedDistribution_id;
@@ -181,7 +193,7 @@
                 }
     
                 let apiURL = 'http://localhost:3000/client';
-                
+                //Posting new client to client collection
                 axios.post(apiURL, this.client).then(() => {
                   
                 
