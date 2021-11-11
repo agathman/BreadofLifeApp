@@ -109,7 +109,7 @@ export default {
         
              this.labels = [  "Asian or Pacific Islander", "Black or African American", "Hispanic or Latino", "White or Caucasian",
                                   "Multiracial or Biracial", "A race/ethnicity not listed here"]
-        this.client = [q1, q2, q3, q4, q5, q6, q7]
+            this.client = [q1, q2, q3, q4, q5, q6, q7]
       } catch (err) {
         if (err.response) {
           // client received an error response (5xx, 4xx)
