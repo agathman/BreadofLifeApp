@@ -7,6 +7,7 @@
                     <label>Client ID</label>
                     <input type="text" class="form-control" v-model="client.client_id" required>
                 </div>
+
                 <div class="form-group">
                     <label>Distribution ID</label>
                     <input type="text" class="form-control" v-model="client.distribution_id" required>
@@ -14,17 +15,12 @@
 
                 <div class="form-group">
                     <label>First Name</label>
-                    <input type="email" class="form-control" v-model="client.fName">
+                    <input type="text" class="form-control" v-model="client.fName" required>
                 </div>
 
                 <div class="form-group">
                     <label>Last Name</label>
                     <input type="text" class="form-control" v-model="client.lName" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="text" class="form-control" v-model="client.phoneNumber" required>
                 </div>
 
                 <div class="form-group">
@@ -38,7 +34,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Vaccine Status</label>
+                    <label>Take Vaccine</label>
                     <input type="text" class="form-control" v-model="client.takeVaccine" required>
                 </div>
 
@@ -48,22 +44,27 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Vaccine Received</label>
+                    <label>Vaccine Preference</label>
+                    <input type="text" class="form-control" v-model="client.vaccinePreference" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Previous Vaccine</label>
                     <input type="text" class="form-control" v-model="client.vaccineReceived" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Additional Supportive Services</label>
+                    <label>Additional Services</label>
                     <input type="text" class="form-control" v-model="client.additionalServices" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Number of Children In Household</label>
+                    <label>Children</label>
                     <input type="text" class="form-control" v-model="client.children" required>
                 </div>
 
                 <div class="form-group">
-                    <label>HouseHold 65+ In Age</label>
+                    <label>Senior</label>
                     <input type="text" class="form-control" v-model="client.senior" required>
                 </div>
 
@@ -73,11 +74,64 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Best Describes Of You</label>
+                    <label>Ethnicity</label>
                     <input type="text" class="form-control" v-model="client.ethnicity" required>
                 </div>
+
                 <button class="btn btn-danger mt-3">Create</button>
             </form>
         </div>
     </div>
 </template>
+
+<script>
+    import axios from "axios";
+
+    export default {
+        data() {
+            return {
+                errors: [],
+                client: {
+                   client_id: '',
+                   distribution_id: '',
+                   fName: '',
+                   lName: '',
+                   phoneNumber: '',
+                   reference: '',
+                   zip: '',
+                   takeVaccine: '',
+                   vaccinePreference: '',
+                   vaccineReceived: '',
+                   additionalServices: '',
+                   children: '',
+                   senior: '',
+                   veteran: '',
+                   ethnicity: ''
+                }
+            }
+        },
+        methods: {
+            handleSubmitForm() {
+                this.errors = [];
+    
+                let apiURL = 'http://localhost:3000/client';
+                
+                axios.post(apiURL, this.client).then(() => {
+                    //changing the view to the list
+                  this.$router.push('/viewClient')
+                  this.client = {
+                    distribution_id: '',
+                    reliefType: '',
+                    reliefDate: '',
+                    location: '',
+                    zip: ''
+                  }
+                }).catch(error => {
+                    this.errors.push("Error in form submission. " + error.response.data);
+                    
+                });
+            }
+        }
+           
+    }
+</script>
