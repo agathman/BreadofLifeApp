@@ -67,14 +67,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/clients",
+					"raw": "http://localhost:3000/clients/",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"clients"
+						"clients",
+						""
 					]
 				}
 			},
@@ -105,15 +106,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/findclient/615f916f9ee4d2b01c373c34",
+					"raw": "http://localhost:3000/client/618c2fd63f9ccbf2f1a6bae2",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"findclient",
-						"615f916f9ee4d2b01c373c34"
+						"client",
+						"618c2fd63f9ccbf2f1a6bae2"
 					]
 				}
 			},
@@ -125,7 +126,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/distribution/1",
+					"raw": "http://localhost:3000/distribution/618c2fc03f9ccbf2f1a6badc",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -133,7 +134,7 @@
 					"port": "3000",
 					"path": [
 						"distribution",
-						"1"
+						"618c2fc03f9ccbf2f1a6badc"
 					]
 				}
 			},
