@@ -21,8 +21,8 @@
                     <tr v-for="client in Clients" :key="client._id">
                         <td>{{ client.fName }}</td>
                         <td>{{ client.lName }}</td>
-                        <td>{{ client.distributions.distribution_id }}</td>
-                        <td>{{ client.distributions.reliefType }}</td>
+                        <td>{{ client.distribution_id }}</td>
+                        <td>{{ client.distributions }}</td>
                         <td>{{ client.distributions.reliefDate }}</td>
                         <td>{{ client.distributions.location }}</td>
                     </tr>
@@ -39,7 +39,8 @@
     export default {
         data() {
             return {
-                Clients: []
+                Clients: [],
+                Distributions: []
             }
         },
         // this is using created hook 

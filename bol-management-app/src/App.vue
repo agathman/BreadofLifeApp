@@ -10,7 +10,6 @@
               <router-link class="nav-link" to="/signUp">
               Sign Up for Distribution
               </router-link>
-              >
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/createEvent"
