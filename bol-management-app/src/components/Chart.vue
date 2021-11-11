@@ -29,10 +29,11 @@ export default {
         ],
       },
       options: {
-        scales: {
+        scales:  { 
           yAxes: [
             {
               ticks: {
+                stepSize: 1,
                 beginAtZero: true,
               },
             },

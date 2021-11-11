@@ -80,7 +80,7 @@
 <YesNoCheck v-bind:selected="client.senior"  @YesNoSelection="changeS($emit)" />
 <br>
 
-<label class="font-weight-bold">12. Are you a veteren? * </label>
+<label class="font-weight-bold">12. Are you a veteran? * </label>
 <br>
 <br>
 <YesNoCheck v-bind:selected="client.veteran" @YesNoSelection="changeV($event)" />

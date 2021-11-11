@@ -1,8 +1,8 @@
 <template>
-<div class="form">
+<div>
     <label class="font-weight-bold"> Input Distribution ID </label>
-    <input type="text" class="form-control">
-    <button class="btn"> Submit </button>
+    <input type="number" v-model="dist_input" class="form-control">
+    <button class="btn" v-on:click="lookUp"> Submit </button>
     <div class="row">
         <div class="col-md-12">
             <table class="table table-striped">
@@ -30,19 +30,23 @@
     export default {
         data() {
             return {
-                Clients: []
+                Clients: [],
+                dist_input: '',
+               
             }
         },
-        // this is using created hook 
-        created() {
-            let apiURL = 'http://localhost:3000/clientEvents/3';
+        methods: { 
+            lookUp() {
+            let apiURL = 'http://localhost:3000/clientEvents/' + this.dist_input
             axios.get(apiURL).then(res => {
                 this.Clients = res.data;
             }).catch(error => {
                 console.log(error)
             });
+            }
         }
-    }
+        }
+  
 </script>
 
 
