@@ -1,3 +1,4 @@
+<!-- HTML for listing client information -->
 <template>
     <div class="row">
         <div class="col-md-12">
@@ -23,6 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Getting client info from backend -->
                     <tr v-for="client in Clients" :key="client._id">
                         <td>{{ client.client_id }}</td>
                         <td>{{ client.distribution_id }}</td>
@@ -53,6 +55,7 @@
 
 
 <script>
+//using axios to communicate with backend
     import axios from "axios";
 
     export default {

@@ -141,6 +141,13 @@
                 }
             }
         },
+        created() {
+        let apiURL = `http://localhost:3000/client/${this.$route.params.id}`;
+
+        axios.get(apiURL).then((res) => {
+            this.client = res.data;
+        })
+    },
         methods: {
           changeD(selectedDistribution_id) {
             this.client.distribution_id = selectedDistribution_id;
@@ -169,41 +176,17 @@
           changeV(selected) {
             this.client.veteran = selected;
           },
+          
             handleUpdateForm() {
-                //first validation
-                this.errors = [];
+            let apiURL = `http://localhost:3000/client/${this.$route.params.id}`;
 
-                if (!this.client.phoneNumber) {
-                    this.errors.push("Phone number required.");
-                }
-    
-                let apiURL = 'http://localhost:3000/client';
-                
-                axios.post(apiURL, this.client).then(() => {
-                    //changing the view to the list
-                  this.$router.push('/viewClients')
-                  this.client = {
-                   client_id: '',
-                   distribution_id: '',
-                   fName: '',
-                   lName: '',
-                   phoneNumber: '',
-                   reference: '',
-                   zip: '',
-                   takeVaccine: '',
-                   vaccinePreference: '',
-                   vaccineReceived:'',
-                   additionalServices: '',
-                   children: '',
-                   senior: '',
-                   veteran: '',
-                   ethnicity: '',
-                  }
-                }).catch(error => {
-                    this.errors.push("Error in form submission. " + error.response.data);
-                    
-                });
-            }
+            axios.put(apiURL, this.client).then((res) => {
+                console.log(res)
+                this.$router.push('/viewClients')
+            }).catch(error => {
+                console.log(error)
+            });
+        }
         }
            
     }

@@ -1,3 +1,4 @@
+<!-- HTML form for listing clients at an event -->
 <template>
 <div>
     <label class="font-weight-bold"> Input Distribution ID </label>

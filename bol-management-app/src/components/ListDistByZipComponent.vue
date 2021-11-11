@@ -1,3 +1,4 @@
+<!-- HTML used to list the events by the zip code -->
 <template>
 <div class="form">
     <label class="font-weight-bold"> Input Zip Code </label>

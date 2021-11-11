@@ -1,3 +1,4 @@
+<!-- HTML template for create event -->
 <template>
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -33,6 +34,7 @@
     </div>
 </template>
 
+<!-- Post event using the backend -->
 <script>
     import axios from "axios";
 
