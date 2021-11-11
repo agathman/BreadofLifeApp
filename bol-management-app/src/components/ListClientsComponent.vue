@@ -19,6 +19,7 @@
                         <th>Senior</th>
                         <th>Veteran</th>
                         <th>Ethnicity</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,11 @@
                         <td>{{ client.senior }}</td>
                         <td>{{ client.veteran }}</td>
                         <td>{{ client.ethnicity }}</td>
+                        <td>
+                            <router-link :to="{name: 'editClient', params: { id: client._id }}" class="btn btn-success ">Edit
+                            </router-link>
+                        <button @click.prevent="deleteClient(client._id)" class="btn btn-danger mx-2">Delete</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -63,6 +69,21 @@
             }).catch(error => {
                 console.log(error)
             });
+        },
+        methods: {
+            deleteClient(id){
+                console.log(id)
+                let apiURL = `http://localhost:3000/deleteClient/${id}`;
+                let indexOfArrayItem = this.Clients.findIndex(i => i._id === id);
+
+                if (window.confirm("Do you really want to delete?")) {
+                    axios.delete(apiURL).then(() => {
+                        this.Clients.splice(indexOfArrayItem, 1);
+                    }).catch(error => {
+                        console.log(error)
+                    });
+                }
+            }
         }
     }
 </script>
