@@ -14,7 +14,7 @@
 
                 <div class="form-group">
                     <label>Date</label>
-                    <input type="email" class="form-control" v-model="distribution.reliefDate">
+                    <input type="text" class="form-control" v-model="distribution.reliefDate">
                 </div>
 
                 <div class="form-group">
@@ -33,3 +33,44 @@
     </div>
 </template>
 
+<script>
+    import axios from "axios";
+
+    export default {
+        data() {
+            return {
+                errors: [],
+                distribution: {
+                   distribution_id: '',
+                   reliefType: '',
+                   reliefDate: '',
+                   location: '',
+                   zip: ''
+                }
+            }
+        },
+        methods: {
+            handleSubmitForm() {
+                this.errors = [];
+    
+                let apiURL = 'http://localhost:3000/distribution';
+                
+                axios.post(apiURL, this.distribution).then(() => {
+                    //changing the view to the list
+                  this.$router.push('/viewEvents')
+                  this.distribution = {
+                    distribution_id: '',
+                    reliefType: '',
+                    reliefDate: '',
+                    location: '',
+                    zip: ''
+                  }
+                }).catch(error => {
+                    this.errors.push("Error in form submission. " + error.response.data);
+                    
+                });
+            }
+        }
+           
+    }
+</script>
