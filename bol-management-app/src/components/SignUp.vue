@@ -24,8 +24,8 @@
         
 <RefCheckBox v-bind:selected="client.reference" @RefSelections="changeR($event)" />
             
-           
-            <br>
+   
+<br>
  
 <label class="font-weight-bold">5. Zip Code *</label>
 <input type="text" class="form-control" v-model="client.zip" >
@@ -80,12 +80,12 @@
 <YesNoCheck v-bind:selected="client.senior"  @YesNoSelection="changeS($emit)" />
 <br>
 
-<label class="font-weight-bold"> Are you a veteren? * </label>
+<label class="font-weight-bold">12. Are you a veteren? * </label>
 <br>
 <br>
 <YesNoCheck v-bind:selected="client.veteran" @YesNoSelection="changeV($event)" />
 <br>
-<label class="font-weight-bold">Which of the following best describes you? * </label>
+<label class="font-weight-bold">13. Which of the following best describes you? * </label>
 <br>                                                          
 <EthnicityCheck v-bind:checked="client.ethnicity" @EthnicitySelection="changeE($event)"/>
 
@@ -95,7 +95,10 @@
                         <li v-for="error in errors" :key="error">{{ error }} </li>
                     </ul>
                 </p>
-                <button class="btn"> Submit </button>
+                <br>
+                <div class="text-center">
+                <button type="button" class="btn btn-primary btn-lg" > Submit </button>
+                </div>
    </div>
 </form>
  </div>
@@ -170,7 +173,7 @@
             this.client.veteran = selected;
           },
             handleSubmitForm() {
-                //first validation
+                //Validation
                 this.errors = [];
 
                 if (!this.client.phoneNumber) {
@@ -180,7 +183,8 @@
                 let apiURL = 'http://localhost:3000/client';
                 
                 axios.post(apiURL, this.client).then(() => {
-                    //changing the view to the list
+                  
+                
                   this.$router.push('/viewClients')
                   this.client = {
                    client_id: '',

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import VueChartJS from '@/views/VueChartJS'
 
 
 const routes = [
@@ -37,7 +38,14 @@ const routes = [
       path: '/viewClientEvent',
       name: 'viewClientEvent',
       component: () => import('../components/ListClientsAtEventComponent')
+    },
+    {
+      path: '/chartjs',
+      name: 'VueChartJS',
+      component: VueChartJS
+
     }
+  
 ]
 
 const router = createRouter({
