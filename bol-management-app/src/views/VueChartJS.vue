@@ -86,37 +86,27 @@ export default {
           if (count[i] === 'Asian or Pacific Islander') {
           q1 += 1;
          }
-      }
-         for (let i = 0; i < response.data.length; i++) { 
-          if (count[i] === 'Black or African American') {
+         if (count[i] === 'Black or African American') {
           q2 += 1;
          }
-      }
-        for (let i = 0; i < response.data.length; i++) { 
-          if (count[i] === 'Hispanic or Latino') {
+         if (count[i] === 'Hispanic or Latino') {
           q3 += 1;
          }
-      }
-       for (let i = 0; i < response.data.length; i++) { 
-          if (count[i] === 'Hispanic or Latino') {
+         if (count[i] === 'Hispanic or Latino') {
           q4 += 1;
          }
-      }
-       for (let i = 0; i < response.data.length; i++) { 
-          if (count[i] === 'White or Caucasian') {
+           if (count[i] === 'White or Caucasian') {
           q5 += 1;
          }
-      }
-       for (let i = 0; i < response.data.length; i++) { 
           if (count[i] === 'Multiracial or Biracial') {
           q6 += 1;
          }
-      }
-       for (let i = 0; i < response.data.length; i++) { 
           if (count[i] === 'A race/ethnicity not listed here') {
           q7 += 1;
          }
       }
+       
+        
              this.labels = [  "Asian or Pacific Islander", "Black or African American", "Hispanic or Latino", "White or Caucasian",
                                   "Multiracial or Biracial", "A race/ethnicity not listed here"]
         this.client = [q1, q2, q3, q4, q5, q6, q7]
