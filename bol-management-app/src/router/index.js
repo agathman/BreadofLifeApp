@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import VueChartJS from '@/views/VueChartJS'
 
-
+//Routes used for front end
 const routes = [
     {
     path: '/',

@@ -1,3 +1,4 @@
+<!-- HTML template for edit event -->
 <template>
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -37,6 +38,7 @@
 </template>
 
 <script>
+//This script updates information for the event and returns back to the list view
 import axios from "axios";
 
 export default {

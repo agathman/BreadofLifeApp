@@ -1,3 +1,4 @@
+<!-- HTML used to list the distribution histories -->
 <template>
 <div class="form">
     <label class="font-weight-bold"> Input Client ID </label>
