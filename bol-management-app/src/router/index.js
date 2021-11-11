@@ -43,7 +43,21 @@ const routes = [
       path: '/chartjs',
       name: 'VueChartJS',
       component: VueChartJS
-
+    },
+    {
+      path: '/distHistory',
+      name: 'distHistory',
+      component: () => import('../components/ListDistributionHistoriesComponent')
+    },
+    {
+      path: '/distZip',
+      name: 'distZip',
+      component: () => import('../components/ListDistByZipComponent')
+    },
+    {
+      path: '/editEvent',
+      name: 'editEvent',
+      component: () => import('../components/EditEventComponent')
     }
   
 ]
