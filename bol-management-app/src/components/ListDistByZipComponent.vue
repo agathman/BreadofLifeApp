@@ -15,7 +15,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!--Figure out how to connect to distribution-->
                     <tr v-for="client in Clients" :key="client._id">
                         <td>{{ client.client_id }}</td>
                         <td>{{ client.distribution_id }}</td>
@@ -38,6 +37,7 @@
                 zip_input: ''
             }
         },
+        //Method uses input zip in the called endpoint
         methods: { 
             lookUp() {
             let apiURL = 'http://localhost:3000/distributionZip/' + this.zip_input

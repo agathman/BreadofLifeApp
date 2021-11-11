@@ -18,7 +18,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!--Figure out how to connect to distribution-->
                     <tr v-for="client in Clients" :key="client._id">
                         <td>{{ client.fName }}</td>
                         <td>{{ client.lName }}</td>
@@ -44,7 +43,7 @@
                 client_input: ''
             }
         },
-        // this is using created hook 
+        //Uses the input client id to call the client-access endpoint
         methods: { 
             lookUp() {
             let apiURL = 'http://localhost:3000/client-access/' + this.client_input

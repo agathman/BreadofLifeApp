@@ -36,6 +36,7 @@
                
             }
         },
+        //Uses distribution id in endpoint
         methods: { 
             lookUp() {
             let apiURL = 'http://localhost:3000/clientEvents/' + this.dist_input
