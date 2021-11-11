@@ -1,6 +1,9 @@
-<!-- Found solution at https://bootstrap-vue.org/docs/components/form-checkbox -->
+<!-- Found checkbox setup at https://bootstrap-vue.org/docs/components/form-checkbox -->
 <template>
 <div>
+   <!-- Checkbox component that is used as input into the reference field in the client collection
+            Checkbox button allows for multiple selections into an array field in client collection 
+            When selections are made, the method passEvent() is used-->
   <b-form-group v-slot="{ ariaDescribedby }">
       <small>Check all that apply</small>
       <b-form-checkbox-group
@@ -22,6 +25,7 @@ export default{
    el: 'checkRef',
    data()  {
        return {
+         //Array to store 1 or more values
        selected: [],
        options: [
           { text: 'Facebook', value: 'Facebook' },
@@ -33,6 +37,7 @@ export default{
    }
    },
    methods:{
+        //Allows selections to be passed to the parent component
     passEvent()
     {
       this.$emit('RefSelections', this.selected)
