@@ -3,6 +3,7 @@
   <!-- functional Nav Bar -->
   <nav class="navbar navbar-expand navbar-light bg-light">
       <div class="container">
+        <img src="./assets/logo.png.webp">
       <a class="navbar-brand" href="/">Event Management App</a>
         <div class="collapse navbar-collapse" >
           <ul class="navbar-nav">
