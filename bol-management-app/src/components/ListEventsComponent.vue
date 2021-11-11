@@ -22,7 +22,7 @@
                         <td>
                             <router-link :to="{name: 'editEvent', params: { id: distribution._id }}" class="btn btn-success ">Edit
                             </router-link>
-                        <button @click.prevent="deleteStudent(distribution._id)" class="btn btn-danger mx-2">Delete</button>
+                        <button @click.prevent="deleteDistribution(distribution._id)" class="btn btn-danger mx-2">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -49,6 +49,21 @@
             }).catch(error => {
                 console.log(error)
             });
+        },
+        methods: {
+            deleteDistribution(id){
+                console.log(id)
+                let apiURL = `http://localhost:3000/deleteDistribution/${id}`;
+                let indexOfArrayItem = this.Distributions.findIndex(i => i._id === id);
+
+                if (window.confirm("Do you really want to delete?")) {
+                    axios.delete(apiURL).then(() => {
+                        this.Distributions.splice(indexOfArrayItem, 1);
+                    }).catch(error => {
+                        console.log(error)
+                    });
+                }
+            }
         }
     }
 </script>
