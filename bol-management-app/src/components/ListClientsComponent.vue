@@ -75,6 +75,7 @@
                 console.log(error)
             });
         },
+        //Deletes client using the _id
         methods: {
             deleteClient(id){
                 console.log(id)

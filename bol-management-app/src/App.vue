@@ -12,11 +12,6 @@
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/createClient"
-                >Create Client</router-link
-              >
-            </li>
-            <li class="nav-item">
               <router-link class="nav-link" to="/createEvent"
                 >Create Event</router-link
               >
@@ -34,7 +29,7 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                View Lists
+                Views
               </a>
               <ul
                 class="dropdown-menu"
@@ -50,19 +45,36 @@
                 >View Events</router-link
               >
             </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Lookups
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
             <li class="nav-item">
               <router-link class="nav-link" to="/viewClientEvent"
-                >View Clients at Event</router-link
+                >Clients at Event</router-link
               >
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/distHistory"
-                >View Distribution History for Client</router-link
+                >Distribution History for Client</router-link
               >
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/distZip"
-                >View Distribution By Zip Code</router-link
+                >Distribution By Zip Code</router-link
               >
             </li>
               </ul>

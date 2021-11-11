@@ -51,6 +51,7 @@
                 console.log(error)
             });
         },
+        //delete distribution by _id
         methods: {
             deleteDistribution(id){
                 console.log(id)
