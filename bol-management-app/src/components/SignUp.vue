@@ -106,7 +106,7 @@
                 </p>
                 <br>
                 <div class="text-center">
-                <button type="button" class="btn btn-primary btn-lg" > Submit </button>
+                <button class="btn btn-primary" > Submit </button>
                 </div>
    </div>
 </form>
@@ -135,8 +135,9 @@
             return {
                 
                 errors: [],
+                   ClientList: [],
                    client: {
-                   client_id:'10',
+                   client_id:'',
                    distribution_id: '',
                    fName: '',
                    lName: '',
@@ -153,6 +154,16 @@
                    ethnicity: '',
                 }
             }
+        },
+        created() {
+            let apiURL = 'http://localhost:3000/clients';
+            axios.get(apiURL).then(res => {
+                this.ClientList = res.data;
+                this.client.client_id = this.ClientList.length + 1
+            }).catch(error => {
+                console.log(error)
+            });
+        
         },
         //Methods that take input from individual components and store them var that can be used to post a new client
         //On change of that particular field (checkbox/radio/select) value is passed from component into client to be posted
@@ -187,6 +198,7 @@
             handleSubmitForm() {
                 //Validation
                 this.errors = [];
+                
 
                 if (!this.client.phoneNumber) {
                     this.errors.push("Phone number required.");
