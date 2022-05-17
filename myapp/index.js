@@ -32,10 +32,9 @@ app.use(morgan("dev"));  //enable incoming request logging in dev mode
 
 //Get all clients
 app.get('/clients', (req, res, next) => {
-    //very plain way to get all the data from the collection through the mongoose schema
+    //get all the data from the collection through the mongoose schema
     ClientModel.find((error, data) => {
         if (error) {
-          //here we are using a call to next() to send an error message back
           return next(error)
         } else {
           res.json(data)
